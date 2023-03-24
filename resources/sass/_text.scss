@@ -2,10 +2,19 @@
  * Fonts
  */
 
-body, button, input, select, label, textarea {
+body,
+button,
+input,
+select,
+label,
+textarea {
   font-family: $text;
 }
-.Codemirror, pre, #markdown-editor-input, .text-mono, .code-base {
+.Codemirror,
+pre,
+#markdown-editor-input,
+.text-mono,
+.code-base {
   font-family: $mono;
 }
 
@@ -38,11 +47,16 @@ h4 {
   margin-bottom: 0.43137255em;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
   position: relative;
   display: block;
-  @include lightDark(color, #222, #BBB);
+  @include lightDark(color, #222, #bbb);
   .subheader {
     font-size: 0.5em;
     line-height: 1em;
@@ -54,7 +68,8 @@ h5 {
   font-size: 1.4em;
 }
 
-h5, h6 {
+h5,
+h6 {
   line-height: 1.2em;
   margin-top: 0.78571429em;
   margin-bottom: 0.66em;
@@ -129,7 +144,12 @@ a.no-link-style {
 /*
  * Other HTML Text Elements
  */
-p, ul, ol, pre, table, blockquote {
+p,
+ul,
+ol,
+pre,
+table,
+blockquote {
   margin-top: 0.3em;
   margin-bottom: 1.375em;
 }
@@ -140,52 +160,72 @@ hr {
   @include lightDark(background, #eaeaea, #555);
   margin-bottom: $-l;
   &.faded {
-    background-image: linear-gradient(to right, #FFF, #e3e0e0 20%, #e3e0e0 80%, #FFF);
+    background-image: linear-gradient(
+      to right,
+      #fff,
+      #e3e0e0 20%,
+      #e3e0e0 80%,
+      #fff
+    );
   }
   &.darker {
-    @include lightDark(background, #DDD, #666);
+    @include lightDark(background, #ddd, #666);
   }
-  &.margin-top, &.even {
+  &.margin-top,
+  &.even {
     margin-top: $-l;
   }
 }
 
-strong, b, .bold, .strong {
+strong,
+b,
+.bold,
+.strong {
   font-weight: bold;
-  > strong, > b, > .bold, > .strong {
+  > strong,
+  > b,
+  > .bold,
+  > .strong {
     font-weight: bolder;
   }
 }
 
-em, i, .italic {
+em,
+i,
+.italic {
   font-style: italic;
 }
 
-small, p.small, span.small, .text-small {
+small,
+p.small,
+span.small,
+.text-small {
   font-size: 0.75rem;
 }
 
-sup, .superscript {
+sup,
+.superscript {
   vertical-align: super;
   font-size: 0.8em;
 }
 
-sub, .subscript {
+sub,
+.subscript {
   vertical-align: sub;
   font-size: 0.8em;
 }
 
 pre {
   font-size: 12px;
-  border: 1px solid #DDD;
-  @include lightDark(background-color, #f5f5f5, #2B2B2B);
-  @include lightDark(border-color, #DDD, #111);
+  border: 1px solid #ddd;
+  @include lightDark(background-color, #f5f5f5, #2b2b2b);
+  @include lightDark(border-color, #ddd, #111);
   padding-left: 31px;
   position: relative;
   padding-top: 3px;
   padding-bottom: 3px;
   &:after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     top: 0;
@@ -193,7 +233,7 @@ pre {
     left: 0;
     height: 100%;
     @include lightDark(background-color, #f5f5f5, #313335);
-    @include lightDark(border-right, 1px solid #DDD, none);
+    @include lightDark(border-right, 1px solid #ddd, none);
   }
 }
 
@@ -238,17 +278,17 @@ blockquote {
 
 .code-base {
   font-size: 0.84em;
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
   border-radius: 3px;
   @include lightDark(background-color, #f8f8f8, #2b2b2b);
-  @include lightDark(border-color, #DDD, #444);
+  @include lightDark(border-color, #ddd, #444);
 }
 
 code {
   @extend .code-base;
   display: inline;
   padding: 1px 3px;
-  white-space:pre-wrap;
+  white-space: pre-wrap;
   line-height: 1.2em;
 }
 
@@ -273,9 +313,10 @@ span.highlight {
 /*
  * Lists
  */
-ul, ol {
-  padding-left: $-m * 2.0;
-  padding-right: $-m * 2.0;
+ul,
+ol {
+  padding-left: $-m * 2;
+  padding-right: $-m * 2;
   display: flow-root;
   p {
     margin: 0;
@@ -295,7 +336,8 @@ ol {
   list-style: decimal;
 }
 
-li > ol, li > ul {
+li > ol,
+li > ul {
   margin-top: 0;
   margin-bottom: 0;
   margin-block-end: 0;
@@ -306,14 +348,16 @@ li > ol, li > ul {
   padding-right: $-m * 1.2;
 }
 
-li.checkbox-item, li.task-list-item {
+li.checkbox-item,
+li.task-list-item {
   display: list-item;
   list-style: none;
   margin-left: -($-m * 1.2);
   input[type="checkbox"] {
     margin-right: $-xs;
   }
-  li.checkbox-item, li.task-list-item {
+  li.checkbox-item,
+  li.task-list-item {
     margin-left: $-xs;
   }
 }
@@ -386,13 +430,18 @@ li.checkbox-item, li.task-list-item {
  */
 .header-group {
   margin: $-m 0;
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     margin: 0;
   }
 }
 
 span.sep {
-  color: #BBB;
+  color: #bbb;
   padding: 0 $-xs;
 }
 

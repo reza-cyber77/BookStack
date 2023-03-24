@@ -1,31 +1,24 @@
-import {
-    init,
-    attributesModule,
-    toVNode
-} from "snabbdom";
+import { init, attributesModule, toVNode } from 'snabbdom'
 
-let patcher;
+let patcher
 
 /**
  * @returns {Function}
  */
-function getPatcher() {
-    if (patcher) return patcher;
+function getPatcher () {
+  if (patcher) return patcher
 
+  patcher = init([attributesModule])
 
-    patcher = init([
-        attributesModule,
-    ]);
-
-    return patcher;
+  return patcher
 }
 
 /**
  * @param {Element} domTarget
  * @param {String} html
  */
-export function patchDomFromHtmlString(domTarget, html) {
-    const contentDom = document.createElement('div');
-    contentDom.innerHTML = html;
-    getPatcher()(toVNode(domTarget), toVNode(contentDom));
+export function patchDomFromHtmlString (domTarget, html) {
+  const contentDom = document.createElement('div')
+  contentDom.innerHTML = html
+  getPatcher()(toVNode(domTarget), toVNode(contentDom))
 }

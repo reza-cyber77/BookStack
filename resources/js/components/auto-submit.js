@@ -1,11 +1,9 @@
-import {Component} from "./component";
+import { Component } from './component'
 
 export class AutoSubmit extends Component {
+  setup () {
+    this.form = this.$el
 
-    setup() {
-        this.form = this.$el;
-
-        this.form.submit();
-    }
-
+    this.form.submit()
+  }
 }

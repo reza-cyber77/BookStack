@@ -1,15 +1,15 @@
 # Development & Testing
 
-All development on BookStack is currently done on the `development` branch. 
+All development on BookStack is currently done on the `development` branch.
 When it's time for a release the `development` branch is merged into release with built & minified CSS & JS then tagged at its version. Here are the current development requirements:
 
-* [Node.js](https://nodejs.org/en/) v16.0+
+- [Node.js](https://nodejs.org/en/) v16.0+
 
 ## Building CSS & JavaScript Assets
 
 This project uses SASS for CSS development and this is built, along with the JavaScript, using a range of npm scripts. The below npm commands can be used to install the dependencies & run the build tasks:
 
-``` bash
+```bash
 # Install NPM Dependencies
 npm install
 
@@ -29,7 +29,7 @@ The testing database will also need migrating and seeding beforehand. This can b
 
 Once done you can run `composer test` in the application root directory to run all tests. Tests can be ran in parallel by running them via `composer t`. This will use Laravel's built-in parallel testing functionality, and attempt to create and seed a database instance for each testing thread. If required these parallel testing instances can be reset, before testing again, by running `composer t-reset`.
 
-If the codebase needs to be tested with deprecations, this can be done via uncommenting the relevant line within the TestCase@setUp function. 
+If the codebase needs to be tested with deprecations, this can be done via uncommenting the relevant line within the TestCase@setUp function.
 
 ## Code Standards
 
@@ -65,7 +65,7 @@ To get started, make sure you meet the following requirements:
 If all the conditions are met, you can proceed with the following steps:
 
 1. **Copy `.env.example` to `.env`**, change `APP_KEY` to a random 32 char string and set `APP_ENV` to `local`.
-2. Make sure **port 8080 is unused** *or else* change `DEV_PORT` to a free port on your host.
+2. Make sure **port 8080 is unused** _or else_ change `DEV_PORT` to a free port on your host.
 3. **Run `chgrp -R docker storage`**. The development container will chown the `storage` directory to the `www-data` user inside the container so BookStack can write to it. You need to change the group to your host's `docker` group here to not lose access to the `storage` directory.
 4. **Run `docker-compose up`** and wait until the image is built and all database migrations have been done.
 5. You can now login with `admin@admin.com` and `password` as password on `localhost:8080` (or another port if specified).
@@ -82,7 +82,7 @@ The docker-compose setup runs an instance of [MailHog](https://github.com/mailho
 
 After starting the general development Docker, migrate & seed the testing database:
 
- ```bash
+```bash
 # This only needs to be done once
 docker-compose run app php artisan migrate --database=mysql_testing
 docker-compose run app php artisan db:seed --class=DummyContentSeeder --database=mysql_testing
@@ -90,7 +90,7 @@ docker-compose run app php artisan db:seed --class=DummyContentSeeder --database
 
 Once the database has been migrated & seeded, you can run the tests like so:
 
- ```bash
+```bash
 docker-compose run app php vendor/bin/phpunit
 ```
 

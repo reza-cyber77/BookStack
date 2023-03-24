@@ -1,6 +1,6 @@
 <?php
   /** @var \BookStack\Auth\Permissions\PermissionFormData $data */
-?>
+  ?>
 <form component="entity-permissions"
       option:entity-permissions:entity-type="{{ $model->getType() }}"
       action="{{ $model->getUrl('/permissions') }}"

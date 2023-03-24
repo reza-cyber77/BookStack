@@ -1,4 +1,4 @@
-import {Component} from "./component";
+import { Component } from './component'
 
 /**
  * Tabs
@@ -18,32 +18,32 @@ import {Component} from "./component";
  * - hidden (If not shown by default).
  */
 export class Tabs extends Component {
+  setup () {
+    this.container = this.$el
+    this.tabs = Array.from(this.container.querySelectorAll('[role="tab"]'))
+    this.panels = Array.from(
+      this.container.querySelectorAll('[role="tabpanel"]')
+    )
 
-    setup() {
-        this.container = this.$el;
-        this.tabs = Array.from(this.container.querySelectorAll('[role="tab"]'));
-        this.panels = Array.from(this.container.querySelectorAll('[role="tabpanel"]'));
+    this.container.addEventListener('click', (event) => {
+      const button = event.target.closest('[role="tab"]')
+      if (button) {
+        this.show(button.getAttribute('aria-controls'))
+      }
+    })
+  }
 
-        this.container.addEventListener('click', event => {
-            const button = event.target.closest('[role="tab"]');
-            if (button) {
-                this.show(button.getAttribute('aria-controls'));
-            }
-        });
+  show (sectionId) {
+    for (const panel of this.panels) {
+      panel.toggleAttribute('hidden', panel.id !== sectionId)
     }
 
-    show(sectionId) {
-        for (const panel of this.panels) {
-            panel.toggleAttribute('hidden', panel.id !== sectionId);
-        }
-
-        for (const tab of this.tabs) {
-            const tabSection = tab.getAttribute('aria-controls');
-            const selected = tabSection === sectionId;
-            tab.setAttribute('aria-selected', selected ? 'true' : 'false');
-        }
-
-        this.$emit('change', {showing: sectionId});
+    for (const tab of this.tabs) {
+      const tabSection = tab.getAttribute('aria-controls')
+      const selected = tabSection === sectionId
+      tab.setAttribute('aria-selected', selected ? 'true' : 'false')
     }
 
+    this.$emit('change', { showing: sectionId })
+  }
 }

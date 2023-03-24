@@ -50,7 +50,7 @@ abstract class TestCase extends BaseTestCase
 
         // We can uncomment the below to run tests with failings upon deprecations.
         // Can't leave on since some deprecations can only be fixed upstream.
-         // $this->withoutDeprecationHandling();
+        // $this->withoutDeprecationHandling();
     }
 
     /**

@@ -3,11 +3,11 @@
  * @param {String} selector
  * @param {Function<Element>} callback
  */
-export function forEach(selector, callback) {
-    const elements = document.querySelectorAll(selector);
-    for (let element of elements) {
-        callback(element);
-    }
+export function forEach (selector, callback) {
+  const elements = document.querySelectorAll(selector)
+  for (const element of elements) {
+    callback(element)
+  }
 }
 
 /**
@@ -16,10 +16,10 @@ export function forEach(selector, callback) {
  * @param {Array<String>} events
  * @param {Function<Event>} callback
  */
-export function onEvents(listenerElement, events, callback) {
-    for (let eventName of events) {
-        listenerElement.addEventListener(eventName, callback);
-    }
+export function onEvents (listenerElement, events, callback) {
+  for (const eventName of events) {
+    listenerElement.addEventListener(eventName, callback)
+  }
 }
 
 /**
@@ -28,20 +28,20 @@ export function onEvents(listenerElement, events, callback) {
  * @param {HTMLElement|Array} elements
  * @param {function} callback
  */
-export function onSelect(elements, callback) {
-    if (!Array.isArray(elements)) {
-        elements = [elements];
-    }
+export function onSelect (elements, callback) {
+  if (!Array.isArray(elements)) {
+    elements = [elements]
+  }
 
-    for (const listenerElement of elements) {
-        listenerElement.addEventListener('click', callback);
-        listenerElement.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                callback(event);
-            }
-        });
-    }
+  for (const listenerElement of elements) {
+    listenerElement.addEventListener('click', callback)
+    listenerElement.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault()
+        callback(event)
+      }
+    })
+  }
 }
 
 /**
@@ -49,18 +49,18 @@ export function onSelect(elements, callback) {
  * @param {HTMLElement|Array} elements
  * @param {function} callback
  */
-export function onEnterPress(elements, callback) {
-    if (!Array.isArray(elements)) {
-        elements = [elements];
-    }
+export function onEnterPress (elements, callback) {
+  if (!Array.isArray(elements)) {
+    elements = [elements]
+  }
 
-    const listener = event => {
-        if (event.key === 'Enter') {
-            callback(event);
-        }
+  const listener = (event) => {
+    if (event.key === 'Enter') {
+      callback(event)
     }
+  }
 
-    elements.forEach(e => e.addEventListener('keypress', listener));
+  elements.forEach((e) => e.addEventListener('keypress', listener))
 }
 
 /**
@@ -72,13 +72,18 @@ export function onEnterPress(elements, callback) {
  * @param {String} eventName
  * @param {Function} callback
  */
-export function onChildEvent(listenerElement, childSelector, eventName, callback) {
-    listenerElement.addEventListener(eventName, function(event) {
-        const matchingChild = event.target.closest(childSelector);
-        if (matchingChild) {
-            callback.call(matchingChild, event, matchingChild);
-        }
-    });
+export function onChildEvent (
+  listenerElement,
+  childSelector,
+  eventName,
+  callback
+) {
+  listenerElement.addEventListener(eventName, function (event) {
+    const matchingChild = event.target.closest(childSelector)
+    if (matchingChild) {
+      callback.call(matchingChild, event, matchingChild)
+    }
+  })
 }
 
 /**
@@ -88,15 +93,15 @@ export function onChildEvent(listenerElement, childSelector, eventName, callback
  * @param {String} text
  * @returns {Element}
  */
-export function findText(selector, text) {
-    const elements = document.querySelectorAll(selector);
-    text = text.toLowerCase();
-    for (let element of elements) {
-        if (element.textContent.toLowerCase().includes(text)) {
-            return element;
-        }
+export function findText (selector, text) {
+  const elements = document.querySelectorAll(selector)
+  text = text.toLowerCase()
+  for (const element of elements) {
+    if (element.textContent.toLowerCase().includes(text)) {
+      return element
     }
-    return null;
+  }
+  return null
 }
 
 /**
@@ -104,19 +109,20 @@ export function findText(selector, text) {
  * This will effectively clear the element.
  * @param {Element} element
  */
-export function showLoading(element) {
-    element.innerHTML = `<div class="loading-container"><div></div><div></div><div></div></div>`;
+export function showLoading (element) {
+  element.innerHTML =
+    '<div class="loading-container"><div></div><div></div><div></div></div>'
 }
 
 /**
  * Remove any loading indicators within the given element.
  * @param {Element} element
  */
-export function removeLoading(element) {
-    const loadingEls = element.querySelectorAll('.loading-container');
-    for (const el of loadingEls) {
-        el.remove();
-    }
+export function removeLoading (element) {
+  const loadingEls = element.querySelectorAll('.loading-container')
+  for (const el of loadingEls) {
+    el.remove()
+  }
 }
 
 /**
@@ -125,9 +131,9 @@ export function removeLoading(element) {
  * @param {String} html
  * @returns {Element}
  */
-export function htmlToDom(html) {
-    const wrap = document.createElement('div');
-    wrap.innerHTML = html;
-    window.$components.init(wrap);
-    return wrap.children[0];
+export function htmlToDom (html) {
+  const wrap = document.createElement('div')
+  wrap.innerHTML = html
+  window.$components.init(wrap)
+  return wrap.children[0]
 }

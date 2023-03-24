@@ -365,7 +365,7 @@ class ThemeTest extends TestCase
 
         // Create theme folder and clean it up on application tear-down
         File::makeDirectory($themeFolderPath);
-        $this->beforeApplicationDestroyed(fn() => File::deleteDirectory($themeFolderPath));
+        $this->beforeApplicationDestroyed(fn () => File::deleteDirectory($themeFolderPath));
 
         // Run provided callback with theme env option set
         $this->runWithEnv('APP_THEME', $themeFolderName, function () use ($callback, $themeFolderName) {

@@ -100,7 +100,7 @@ User denied page permission.
 - Role B has entity deny page permission.
 - User has both Role A & B.
 
-User granted page permission. 
+User granted page permission.
 Explicit grant overrides entity deny at same level.
 
 #### test_20_inherit_allow
@@ -121,7 +121,7 @@ User granted page permission.
 
 User denied page permission.
 
-#### test_22_same_level_conflict_inherit 
+#### test_22_same_level_conflict_inherit
 
 - Page permissions have inherit enabled.
 - Chapter permissions has inherit disabled.
@@ -353,7 +353,7 @@ User denied page permission.
 #### test_91_fallback_overrides_parent_entity_role_inherit
 
 - Book permissions have inherit disabled.
-- Chapter permissions have inherit disabled. 
+- Chapter permissions have inherit disabled.
 - Page permissions have inherit enabled.
 - Book fallback has entity deny permission.
 - Chapter fallback has entity deny permission.

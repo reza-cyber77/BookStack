@@ -1,66 +1,72 @@
-import {Component} from "./component";
+import { Component } from './component'
 
 export class PermissionsTable extends Component {
+  setup () {
+    this.container = this.$el
+    this.cellSelector = this.$opts.cellSelector || 'td,th'
+    this.rowSelector = this.$opts.rowSelector || 'tr'
 
-    setup() {
-        this.container = this.$el;
-        this.cellSelector = this.$opts.cellSelector || 'td,th';
-        this.rowSelector = this.$opts.rowSelector || 'tr';
-
-        // Handle toggle all event
-        for (const toggleAllElem of (this.$manyRefs.toggleAll || [])) {
-            toggleAllElem.addEventListener('click', this.toggleAllClick.bind(this));
-        }
-
-        // Handle toggle row event
-        for (const toggleRowElem of (this.$manyRefs.toggleRow || [])) {
-            toggleRowElem.addEventListener('click', this.toggleRowClick.bind(this));
-        }
-
-        // Handle toggle column event
-        for (const toggleColElem of (this.$manyRefs.toggleColumn || [])) {
-            toggleColElem.addEventListener('click', this.toggleColumnClick.bind(this));
-        }
+    // Handle toggle all event
+    for (const toggleAllElem of this.$manyRefs.toggleAll || []) {
+      toggleAllElem.addEventListener('click', this.toggleAllClick.bind(this))
     }
 
-    toggleAllClick(event) {
-        event.preventDefault();
-        this.toggleAllInElement(this.container);
+    // Handle toggle row event
+    for (const toggleRowElem of this.$manyRefs.toggleRow || []) {
+      toggleRowElem.addEventListener('click', this.toggleRowClick.bind(this))
     }
 
-    toggleRowClick(event) {
-        event.preventDefault();
-        this.toggleAllInElement(event.target.closest(this.rowSelector));
+    // Handle toggle column event
+    for (const toggleColElem of this.$manyRefs.toggleColumn || []) {
+      toggleColElem.addEventListener(
+        'click',
+        this.toggleColumnClick.bind(this)
+      )
     }
+  }
 
-    toggleColumnClick(event) {
-        event.preventDefault();
+  toggleAllClick (event) {
+    event.preventDefault()
+    this.toggleAllInElement(this.container)
+  }
 
-        const tableCell = event.target.closest(this.cellSelector);
-        const colIndex = Array.from(tableCell.parentElement.children).indexOf(tableCell);
-        const tableRows = this.container.querySelectorAll(this.rowSelector);
-        const inputsToToggle = [];
+  toggleRowClick (event) {
+    event.preventDefault()
+    this.toggleAllInElement(event.target.closest(this.rowSelector))
+  }
 
-        for (let row of tableRows) {
-            const targetCell = row.children[colIndex];
-            if (targetCell) {
-                inputsToToggle.push(...targetCell.querySelectorAll('input[type=checkbox]'));
-            }
-        }
-        this.toggleAllInputs(inputsToToggle);
+  toggleColumnClick (event) {
+    event.preventDefault()
+
+    const tableCell = event.target.closest(this.cellSelector)
+    const colIndex = Array.from(tableCell.parentElement.children).indexOf(
+      tableCell
+    )
+    const tableRows = this.container.querySelectorAll(this.rowSelector)
+    const inputsToToggle = []
+
+    for (const row of tableRows) {
+      const targetCell = row.children[colIndex]
+      if (targetCell) {
+        inputsToToggle.push(
+          ...targetCell.querySelectorAll('input[type=checkbox]')
+        )
+      }
     }
+    this.toggleAllInputs(inputsToToggle)
+  }
 
-    toggleAllInElement(domElem) {
-        const inputsToToggle = domElem.querySelectorAll('input[type=checkbox]');
-        this.toggleAllInputs(inputsToToggle);
+  toggleAllInElement (domElem) {
+    const inputsToToggle = domElem.querySelectorAll('input[type=checkbox]')
+    this.toggleAllInputs(inputsToToggle)
+  }
+
+  toggleAllInputs (inputsToToggle) {
+    const currentState =
+      inputsToToggle.length > 0 ? inputsToToggle[0].checked : false
+    for (const checkbox of inputsToToggle) {
+      checkbox.checked = !currentState
+      checkbox.dispatchEvent(new Event('change'))
     }
-
-    toggleAllInputs(inputsToToggle) {
-        const currentState = inputsToToggle.length > 0 ? inputsToToggle[0].checked : false;
-        for (let checkbox of inputsToToggle) {
-            checkbox.checked = !currentState;
-            checkbox.dispatchEvent(new Event('change'));
-        }
-    }
-
+  }
 }

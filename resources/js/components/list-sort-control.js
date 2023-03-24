@@ -2,47 +2,45 @@
  * ListSortControl
  * Manages the logic for the control which provides list sorting options.
  */
-import {Component} from "./component";
+import { Component } from './component'
 
 export class ListSortControl extends Component {
+  setup () {
+    this.elem = this.$el
+    this.menu = this.$refs.menu
 
-    setup() {
-        this.elem = this.$el;
-        this.menu = this.$refs.menu;
+    this.sortInput = this.$refs.sort
+    this.orderInput = this.$refs.order
+    this.form = this.$refs.form
 
-        this.sortInput = this.$refs.sort;
-        this.orderInput = this.$refs.order;
-        this.form = this.$refs.form;
+    this.setupListeners()
+  }
 
-        this.setupListeners();
-    }
+  setupListeners () {
+    this.menu.addEventListener('click', (event) => {
+      if (event.target.closest('[data-sort-value]') !== null) {
+        this.sortOptionClick(event)
+      }
+    })
 
-    setupListeners() {
-        this.menu.addEventListener('click', event => {
-            if (event.target.closest('[data-sort-value]') !== null) {
-                this.sortOptionClick(event);
-            }
-        });
+    this.elem.addEventListener('click', (event) => {
+      if (event.target.closest('[data-sort-dir]') !== null) {
+        this.sortDirectionClick(event)
+      }
+    })
+  }
 
-        this.elem.addEventListener('click', event => {
-            if (event.target.closest('[data-sort-dir]') !== null) {
-                this.sortDirectionClick(event);
-            }
-        });
-    }
+  sortOptionClick (event) {
+    const sortOption = event.target.closest('[data-sort-value]')
+    this.sortInput.value = sortOption.getAttribute('data-sort-value')
+    event.preventDefault()
+    this.form.submit()
+  }
 
-    sortOptionClick(event) {
-        const sortOption = event.target.closest('[data-sort-value]');
-        this.sortInput.value = sortOption.getAttribute('data-sort-value');
-        event.preventDefault();
-        this.form.submit();
-    }
-
-    sortDirectionClick(event) {
-        const currentDir = this.orderInput.value;
-        this.orderInput.value = (currentDir === 'asc') ? 'desc' : 'asc';
-        event.preventDefault();
-        this.form.submit();
-    }
-
+  sortDirectionClick (event) {
+    const currentDir = this.orderInput.value
+    this.orderInput.value = currentDir === 'asc' ? 'desc' : 'asc'
+    event.preventDefault()
+    this.form.submit()
+  }
 }

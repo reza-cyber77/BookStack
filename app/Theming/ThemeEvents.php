@@ -28,7 +28,7 @@ class ThemeEvents
      * @param string                                $type
      * @param string|\BookStack\Interfaces\Loggable $detail
      */
-    const ACTIVITY_LOGGED = 'activity_logged';
+    public const ACTIVITY_LOGGED = 'activity_logged';
 
     /**
      * Application boot-up.
@@ -36,7 +36,7 @@ class ThemeEvents
      *
      * @param \BookStack\Application $app
      */
-    const APP_BOOT = 'app_boot';
+    public const APP_BOOT = 'app_boot';
 
     /**
      * Auth login event.
@@ -47,7 +47,7 @@ class ThemeEvents
      * @param string               $authSystem
      * @param \BookStack\Auth\User $user
      */
-    const AUTH_LOGIN = 'auth_login';
+    public const AUTH_LOGIN = 'auth_login';
 
     /**
      * Auth register event.
@@ -58,7 +58,7 @@ class ThemeEvents
      * @param string               $authSystem
      * @param \BookStack\Auth\User $user
      */
-    const AUTH_REGISTER = 'auth_register';
+    public const AUTH_REGISTER = 'auth_register';
 
     /**
      * Commonmark environment configure.
@@ -68,7 +68,7 @@ class ThemeEvents
      * @param \League\CommonMark\Environment\Environment $environment
      * @returns \League\CommonMark\Environment\Environment|null
      */
-    const COMMONMARK_ENVIRONMENT_CONFIGURE = 'commonmark_environment_configure';
+    public const COMMONMARK_ENVIRONMENT_CONFIGURE = 'commonmark_environment_configure';
 
     /**
      * Page include parse event.
@@ -83,7 +83,7 @@ class ThemeEvents
      * @param Page   $currentPage
      * @param ?Page  $referencedPage
      */
-    const PAGE_INCLUDE_PARSE = 'page_include_parse';
+    public const PAGE_INCLUDE_PARSE = 'page_include_parse';
 
     /**
      * Web before middleware action.
@@ -95,7 +95,7 @@ class ThemeEvents
      * @param \Illuminate\Http\Request $request
      * @returns \Illuminate\Http\Response|null
      */
-    const WEB_MIDDLEWARE_BEFORE = 'web_middleware_before';
+    public const WEB_MIDDLEWARE_BEFORE = 'web_middleware_before';
 
     /**
      * Web after middleware action.
@@ -107,7 +107,7 @@ class ThemeEvents
      * @param \Illuminate\Http\Response|\Symfony\Component\HttpFoundation\BinaryFileResponse $response
      * @returns \Illuminate\Http\Response|null
      */
-    const WEB_MIDDLEWARE_AFTER = 'web_middleware_after';
+    public const WEB_MIDDLEWARE_AFTER = 'web_middleware_after';
 
     /**
      * Webhook call before event.
@@ -125,5 +125,5 @@ class ThemeEvents
      * @param \BookStack\Auth\User                  $initiator
      * @param int                                   $initiatedTime
      */
-    const WEBHOOK_CALL_BEFORE = 'webhook_call_before';
+    public const WEBHOOK_CALL_BEFORE = 'webhook_call_before';
 }

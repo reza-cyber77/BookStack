@@ -10,7 +10,7 @@
   @include whenDark {
     background: #000;
     .text-link {
-      color: #AAA !important;
+      color: #aaa !important;
     }
   }
 }
@@ -21,17 +21,23 @@
 /*
  * Status text colors
  */
-.text-pos, .text-pos:hover, .text-pos-hover:hover {
+.text-pos,
+.text-pos:hover,
+.text-pos-hover:hover {
   color: $positive !important;
   fill: $positive !important;
 }
 
-.text-warn, .text-warn:hover, .text-warn-hover:hover {
+.text-warn,
+.text-warn:hover,
+.text-warn-hover:hover {
   color: $warning !important;
   fill: $warning !important;
 }
 
-.text-neg, .text-neg:hover, .text-neg-hover:hover  {
+.text-neg,
+.text-neg:hover,
+.text-neg-hover:hover {
   color: $negative !important;
   fill: $negative !important;
 }
@@ -39,12 +45,16 @@
 /*
  * Style text colors
  */
-.text-primary, .text-primary:hover, .text-primary-hover:hover  {
+.text-primary,
+.text-primary:hover,
+.text-primary-hover:hover {
   color: var(--color-primary) !important;
   fill: var(--color-primary) !important;
 }
 
-.text-link, .text-link:hover, .text-link-hover:hover  {
+.text-link,
+.text-link:hover,
+.text-link-hover:hover {
   color: var(--color-link) !important;
   fill: var(--color-link) !important;
 }
@@ -67,23 +77,28 @@
 /*
  * Entity text colors
  */
-.text-bookshelf, .text-bookshelf:hover {
+.text-bookshelf,
+.text-bookshelf:hover {
   color: var(--color-bookshelf);
   fill: var(--color-bookshelf);
 }
-.text-book, .text-book:hover {
+.text-book,
+.text-book:hover {
   color: var(--color-book);
   fill: var(--color-book);
 }
-.text-page, .text-page:hover {
+.text-page,
+.text-page:hover {
   color: var(--color-page);
   fill: var(--color-page);
 }
-.text-page.draft, .text-page.draft:hover {
+.text-page.draft,
+.text-page.draft:hover {
   color: var(--color-page-draft);
   fill: var(--color-page-draft);
 }
-.text-chapter, .text-chapter:hover {
+.text-chapter,
+.text-chapter:hover {
   color: var(--color-chapter);
   fill: var(--color-chapter);
 }
@@ -92,7 +107,7 @@
  * Standard & Entity background colors
  */
 .bg-white {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 .bg-book {
   background-color: var(--color-book);

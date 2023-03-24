@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,7 +13,6 @@ return new class extends Migration
      */
     public function up()
     {
-
         // Add API tokens table
         Schema::create('api_tokens', function (Blueprint $table) {
             $table->increments('id');

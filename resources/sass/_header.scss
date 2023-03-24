@@ -19,9 +19,9 @@ header {
   z-index: 11;
   top: 0;
   color: rgb(250, 250, 250);
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid #ddd;
   box-shadow: $bs-card;
-  @include lightDark(border-bottom-color, #DDD, #000);
+  @include lightDark(border-bottom-color, #ddd, #000);
   .header-links {
     display: flex;
     align-items: center;
@@ -34,18 +34,19 @@ header {
   .links a {
     display: inline-block;
     padding: 10px $-m;
-    color: #FFF;
+    color: #fff;
     border-radius: 3px;
   }
   .links a:hover {
     text-decoration: none;
-    background-color: rgba(255, 255, 255, .15);
+    background-color: rgba(255, 255, 255, 0.15);
   }
   .dropdown-container {
     padding-inline-start: $-m;
     padding-inline-end: 0;
   }
-  .avatar, .user-name {
+  .avatar,
+  .user-name {
     display: inline-block;
   }
   .avatar {
@@ -84,10 +85,10 @@ header {
   }
 }
 
-.header *, .primary-background * {
-  outline-color: #FFF;
+.header *,
+.primary-background * {
+  outline-color: #fff;
 }
-
 
 header .search-box {
   display: inline-block;
@@ -95,10 +96,10 @@ header .search-box {
     background-color: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 40px;
-    color: #EEE;
+    color: #eee;
     z-index: 2;
     height: auto;
-    padding: $-xs*1.5;
+    padding: $-xs * 1.5;
     padding-inline-start: 40px;
     &:focus {
       outline: none;
@@ -106,7 +107,7 @@ header .search-box {
     }
   }
   input::placeholder {
-    color: #FFF;
+    color: #fff;
     opacity: 0.6;
   }
   @include between($l, $xl) {
@@ -120,9 +121,9 @@ header .search-box {
   z-index: 1;
   inset-inline-start: 16px;
   top: 10px;
-  color: #FFF;
+  color: #fff;
   opacity: 0.6;
-  @include lightDark(color, rgba(255, 255, 255, 0.8), #AAA);
+  @include lightDark(color, rgba(255, 255, 255, 0.8), #aaa);
   svg {
     margin-inline-end: 0;
   }
@@ -141,16 +142,16 @@ header .search-box {
   border-radius: 3px;
   box-shadow: $bs-hover;
   transform-origin: top center;
-  opacity: .5;
+  opacity: 0.5;
   transform: scale(0.9);
-  .entity-item-snippet p  {
+  .entity-item-snippet p {
     display: none;
   }
   .entity-item-snippet {
-    font-size: .8rem;
+    font-size: 0.8rem;
   }
   .entity-list-item-name {
-    font-size: .9rem;
+    font-size: 0.9rem;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 2;
@@ -166,11 +167,12 @@ header .search-box.search-active:focus-within {
     display: block;
   }
   input {
-    @include lightDark(background-color, #EEE, #333);
-    @include lightDark(border-color, #DDD, #111);
+    @include lightDark(background-color, #eee, #333);
+    @include lightDark(border-color, #ddd, #111);
   }
-  #header-search-box-button, input {
-    @include lightDark(color, #444, #AAA);
+  #header-search-box-button,
+  input {
+    @include lightDark(color, #444, #aaa);
   }
 }
 
@@ -182,9 +184,9 @@ header .search-box.search-active:focus-within {
   align-items: center;
   border-radius: 4px;
   &:hover {
-    color: #FFF;
+    color: #fff;
     text-decoration: none;
-    background-color: rgba(255, 255, 255, .15);
+    background-color: rgba(255, 255, 255, 0.15);
   }
 }
 
@@ -199,8 +201,8 @@ header .search-box.search-active:focus-within {
 }
 
 .mobile-menu-toggle {
-  color: #FFF;
-  fill: #FFF;
+  color: #fff;
+  fill: #fff;
   font-size: 2em;
   border: 2px solid rgba(255, 255, 255, 0.8);
   border-radius: 4px;
@@ -221,8 +223,6 @@ header .search-box.search-active:focus-within {
   }
 }
 
-
-
 @include smaller-than($l) {
   header .header-links {
     @include lightDark(background-color, #fff, #333);
@@ -239,7 +239,9 @@ header .search-box.search-active:focus-within {
       display: block;
     }
   }
-  header .links a, header .dropdown-container ul li a, header .dropdown-container ul li button {
+  header .links a,
+  header .dropdown-container ul li a,
+  header .dropdown-container ul li button {
     text-align: start;
     display: grid;
     align-items: center;
@@ -286,21 +288,21 @@ header .search-box.search-active:focus-within {
   position: sticky;
   top: 0;
   z-index: 5;
-  background-color: #FFF;
-  border-bottom: 1px solid #DDD;
-  @include lightDark(border-bottom-color, #DDD, #333);
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  @include lightDark(border-bottom-color, #ddd, #333);
   box-shadow: $bs-card;
 }
 .tri-layout-mobile-tab {
   text-align: center;
-  border-bottom: 3px solid #BBB;
+  border-bottom: 3px solid #bbb;
   cursor: pointer;
   margin: 0;
-  @include lightDark(background-color, #FFF, #222);
-  @include lightDark(border-bottom-color, #BBB, #333);
+  @include lightDark(background-color, #fff, #222);
+  @include lightDark(border-bottom-color, #bbb, #333);
   &:first-child {
-    border-inline-end: 1px solid #DDD;
-    @include lightDark(border-inline-end-color, #DDD, #000);
+    border-inline-end: 1px solid #ddd;
+    @include lightDark(border-inline-end-color, #ddd, #000);
   }
   &[aria-selected="true"] {
     border-bottom-color: currentColor !important;
@@ -326,7 +328,8 @@ header .search-box.search-active:focus-within {
     line-height: 0.8;
     margin: -2px 0 0;
   }
-  &:hover, &:focus-within {
+  &:hover,
+  &:focus-within {
     opacity: 1;
   }
   @media (prefers-contrast: more) {
@@ -347,7 +350,10 @@ header .search-box.search-active:focus-within {
 }
 
 .faded {
-  a, button, span, span > div {
+  a,
+  button,
+  span,
+  span > div {
     color: #666;
     fill: #666;
   }
@@ -376,7 +382,6 @@ header .search-box.search-active:focus-within {
     padding-inline-start: 0;
   }
 }
-
 
 .action-buttons .dropdown-container:last-child a {
   padding-inline-end: 0;

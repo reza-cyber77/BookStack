@@ -44,7 +44,6 @@ Route::get('/favicon.ico', [HomeController::class, 'favicon']);
 
 // Authenticated routes...
 Route::middleware('auth')->group(function () {
-
     // Secure images routing
     Route::get('/uploads/images/{path}', [Images\ImageController::class, 'showImage'])
         ->where('path', '.*$');

@@ -5,25 +5,29 @@ table {
     @include lightDark(background-color, #f8f8f8, #333);
     font-weight: 500;
   }
-  td, th {
+  td,
+  th {
     min-width: 10px;
     padding: 6px 8px;
-    border: 1px solid #DDD;
+    border: 1px solid #ddd;
     overflow: auto;
     line-height: 1.2;
-	word-break: break-word;
+    word-break: break-word;
   }
-  td p, th p {
+  td p,
+  th p {
     margin: 0;
   }
 }
 
 table.table {
   width: 100%;
-  tr td, tr th {
+  tr td,
+  tr th {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   }
-  th, td {
+  th,
+  td {
     text-align: start;
     border: none;
     padding: $-s $-s;
@@ -35,7 +39,7 @@ table.table {
     font-weight: bold;
   }
   tr:hover {
-    @include lightDark(background-color, #F2F2F2, #333);
+    @include lightDark(background-color, #f2f2f2, #333);
   }
   .text-right {
     text-align: end;
@@ -52,8 +56,8 @@ table.table {
   &.expand-to-padding {
     margin-left: -$-s;
     margin-right: -$-s;
-    width: calc(100% + (2*#{$-s}));
-    max-width: calc(100% + (2*#{$-s}));
+    width: calc(100% + (2 *#{$-s}));
+    max-width: calc(100% + (2 *#{$-s}));
   }
 }
 

@@ -7,8 +7,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      *
@@ -45,14 +44,14 @@ return new class extends Migration
         };
 
         $query = $defaultEntityPermissionGenQuery(DB::query(), 'pages', 'page')
-            ->union(fn(Builder $query) => $defaultEntityPermissionGenQuery($query, 'books', 'book'))
-            ->union(fn(Builder $query) => $defaultEntityPermissionGenQuery($query, 'chapters', 'chapter'))
-            ->union(fn(Builder $query) => $defaultEntityPermissionGenQuery($query, 'bookshelves', 'bookshelf'));
+            ->union(fn (Builder $query) => $defaultEntityPermissionGenQuery($query, 'books', 'book'))
+            ->union(fn (Builder $query) => $defaultEntityPermissionGenQuery($query, 'chapters', 'chapter'))
+            ->union(fn (Builder $query) => $defaultEntityPermissionGenQuery($query, 'bookshelves', 'bookshelf'));
 
         DB::table('entity_permissions')->insertUsing(['entity_id', 'entity_type', 'role_id', 'view', 'create', 'update', 'delete'], $query);
 
         // Drop restricted columns
-        $dropRestrictedColumn = fn(Blueprint $table) => $table->dropColumn('restricted');
+        $dropRestrictedColumn = fn (Blueprint $table) => $table->dropColumn('restricted');
         Schema::table('pages', $dropRestrictedColumn);
         Schema::table('chapters', $dropRestrictedColumn);
         Schema::table('books', $dropRestrictedColumn);
@@ -67,7 +66,7 @@ return new class extends Migration
     public function down()
     {
         // Create restricted columns
-        $createRestrictedColumn = fn(Blueprint $table) => $table->boolean('restricted')->index()->default(0);
+        $createRestrictedColumn = fn (Blueprint $table) => $table->boolean('restricted')->index()->default(0);
         Schema::table('pages', $createRestrictedColumn);
         Schema::table('chapters', $createRestrictedColumn);
         Schema::table('books', $createRestrictedColumn);

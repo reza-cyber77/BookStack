@@ -29,7 +29,7 @@ class ApiEntityListFormatter
         $this->list = $list;
 
         // Default dynamic fields
-        $this->withField('url', fn(Entity $entity) => $entity->getUrl());
+        $this->withField('url', fn (Entity $entity) => $entity->getUrl());
     }
 
     /**
@@ -49,7 +49,7 @@ class ApiEntityListFormatter
      */
     public function withType(): self
     {
-        $this->withField('type', fn(Entity $entity) => $entity->getType());
+        $this->withField('type', fn (Entity $entity) => $entity->getType());
         return $this;
     }
 
@@ -58,7 +58,7 @@ class ApiEntityListFormatter
      */
     public function withTags(): self
     {
-        $this->withField('tags', fn(Entity $entity) => $entity->tags);
+        $this->withField('tags', fn (Entity $entity) => $entity->tags);
         return $this;
     }
 
