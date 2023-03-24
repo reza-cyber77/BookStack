@@ -44,12 +44,12 @@ class EntityProvider
 
     public function pageWithinChapter(): Page
     {
-        return $this->page(fn(Builder $query) => $query->whereHas('chapter')->with('chapter'));
+        return $this->page(fn (Builder $query) => $query->whereHas('chapter')->with('chapter'));
     }
 
     public function pageNotWithinChapter(): Page
     {
-        return $this->page(fn(Builder $query) => $query->where('chapter_id', '=', 0));
+        return $this->page(fn (Builder $query) => $query->where('chapter_id', '=', 0));
     }
 
     /**
@@ -65,7 +65,7 @@ class EntityProvider
 
     public function chapterHasPages(): Chapter
     {
-        return $this->chapter(fn(Builder $query) => $query->whereHas('pages'));
+        return $this->chapter(fn (Builder $query) => $query->whereHas('pages'));
     }
 
     /**

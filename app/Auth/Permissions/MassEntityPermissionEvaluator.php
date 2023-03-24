@@ -62,7 +62,7 @@ class MassEntityPermissionEvaluator extends EntityPermissionEvaluator
 
         $permissionMap = $this->getPermissionsMapByTypeId($entityTypeIdChain, []);
 
-       // Manipulate permission map to also be keyed by roleId.
+        // Manipulate permission map to also be keyed by roleId.
         foreach ($permissionMap as $typeId => $permissions) {
             $permissionMap[$typeId] = [];
             foreach ($permissions as $permission) {

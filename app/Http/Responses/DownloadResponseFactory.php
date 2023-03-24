@@ -30,7 +30,6 @@ class DownloadResponseFactory
     public function streamedDirectly($stream, string $fileName): StreamedResponse
     {
         return response()->stream(function () use ($stream) {
-
             // End & flush the output buffer, if we're in one, otherwise we still use memory.
             // Output buffer may or may not exist depending on PHP `output_buffering` setting.
             // Ignore in testing since output buffers are used to gather a response.

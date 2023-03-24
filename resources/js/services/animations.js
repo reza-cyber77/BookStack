@@ -3,7 +3,7 @@
  * Used to ensure only one transitionend function exists at any time.
  * @type {WeakMap<object, any>}
  */
-const animateStylesCleanupMap = new WeakMap();
+const animateStylesCleanupMap = new WeakMap()
 
 /**
  * Fade in the given element.
@@ -11,14 +11,19 @@ const animateStylesCleanupMap = new WeakMap();
  * @param {Number} animTime
  * @param {Function|null} onComplete
  */
-export function fadeIn(element, animTime = 400, onComplete = null) {
-    cleanupExistingElementAnimation(element);
-    element.style.display = 'block';
-    animateStyles(element, {
-        opacity: ['0', '1']
-    }, animTime, () => {
-        if (onComplete) onComplete();
-    });
+export function fadeIn (element, animTime = 400, onComplete = null) {
+  cleanupExistingElementAnimation(element)
+  element.style.display = 'block'
+  animateStyles(
+    element,
+    {
+      opacity: ['0', '1']
+    },
+    animTime,
+    () => {
+      if (onComplete) onComplete()
+    }
+  )
 }
 
 /**
@@ -27,14 +32,19 @@ export function fadeIn(element, animTime = 400, onComplete = null) {
  * @param {Number} animTime
  * @param {Function|null} onComplete
  */
-export function fadeOut(element, animTime = 400, onComplete = null) {
-    cleanupExistingElementAnimation(element);
-    animateStyles(element, {
-        opacity: ['1', '0']
-    }, animTime, () => {
-        element.style.display = 'none';
-        if (onComplete) onComplete();
-    });
+export function fadeOut (element, animTime = 400, onComplete = null) {
+  cleanupExistingElementAnimation(element)
+  animateStyles(
+    element,
+    {
+      opacity: ['1', '0']
+    },
+    animTime,
+    () => {
+      element.style.display = 'none'
+      if (onComplete) onComplete()
+    }
+  )
 }
 
 /**
@@ -42,22 +52,23 @@ export function fadeOut(element, animTime = 400, onComplete = null) {
  * @param {Element} element
  * @param {Number} animTime
  */
-export function slideUp(element, animTime = 400) {
-    cleanupExistingElementAnimation(element);
-    const currentHeight = element.getBoundingClientRect().height;
-    const computedStyles = getComputedStyle(element);
-    const currentPaddingTop = computedStyles.getPropertyValue('padding-top');
-    const currentPaddingBottom = computedStyles.getPropertyValue('padding-bottom');
-    const animStyles = {
-        maxHeight: [`${currentHeight}px`, '0px'],
-        overflow: ['hidden', 'hidden'],
-        paddingTop: [currentPaddingTop, '0px'],
-        paddingBottom: [currentPaddingBottom, '0px'],
-    };
+export function slideUp (element, animTime = 400) {
+  cleanupExistingElementAnimation(element)
+  const currentHeight = element.getBoundingClientRect().height
+  const computedStyles = getComputedStyle(element)
+  const currentPaddingTop = computedStyles.getPropertyValue('padding-top')
+  const currentPaddingBottom =
+    computedStyles.getPropertyValue('padding-bottom')
+  const animStyles = {
+    maxHeight: [`${currentHeight}px`, '0px'],
+    overflow: ['hidden', 'hidden'],
+    paddingTop: [currentPaddingTop, '0px'],
+    paddingBottom: [currentPaddingBottom, '0px']
+  }
 
-    animateStyles(element, animStyles, animTime, () => {
-        element.style.display = 'none';
-    });
+  animateStyles(element, animStyles, animTime, () => {
+    element.style.display = 'none'
+  })
 }
 
 /**
@@ -65,21 +76,21 @@ export function slideUp(element, animTime = 400) {
  * @param {Element} element - Element to animate
  * @param {Number} animTime - Animation time in ms
  */
-export function slideDown(element, animTime = 400) {
-    cleanupExistingElementAnimation(element);
-    element.style.display = 'block';
-    const targetHeight = element.getBoundingClientRect().height;
-    const computedStyles = getComputedStyle(element);
-    const targetPaddingTop = computedStyles.getPropertyValue('padding-top');
-    const targetPaddingBottom = computedStyles.getPropertyValue('padding-bottom');
-    const animStyles = {
-        maxHeight: ['0px', `${targetHeight}px`],
-        overflow: ['hidden', 'hidden'],
-        paddingTop: ['0px', targetPaddingTop],
-        paddingBottom: ['0px', targetPaddingBottom],
-    };
+export function slideDown (element, animTime = 400) {
+  cleanupExistingElementAnimation(element)
+  element.style.display = 'block'
+  const targetHeight = element.getBoundingClientRect().height
+  const computedStyles = getComputedStyle(element)
+  const targetPaddingTop = computedStyles.getPropertyValue('padding-top')
+  const targetPaddingBottom = computedStyles.getPropertyValue('padding-bottom')
+  const animStyles = {
+    maxHeight: ['0px', `${targetHeight}px`],
+    overflow: ['hidden', 'hidden'],
+    paddingTop: ['0px', targetPaddingTop],
+    paddingBottom: ['0px', targetPaddingBottom]
+  }
 
-    animateStyles(element, animStyles, animTime);
+  animateStyles(element, animStyles, animTime)
 }
 
 /**
@@ -91,27 +102,29 @@ export function slideDown(element, animTime = 400) {
  * @param {Number} animTime - Animation time in ms
  * @returns {function} - Function to run in second state to trigger animation.
  */
-export function transitionHeight(element, animTime = 400) {
-    const startHeight = element.getBoundingClientRect().height;
-    const initialComputedStyles = getComputedStyle(element);
-    const startPaddingTop = initialComputedStyles.getPropertyValue('padding-top');
-    const startPaddingBottom = initialComputedStyles.getPropertyValue('padding-bottom');
+export function transitionHeight (element, animTime = 400) {
+  const startHeight = element.getBoundingClientRect().height
+  const initialComputedStyles = getComputedStyle(element)
+  const startPaddingTop = initialComputedStyles.getPropertyValue('padding-top')
+  const startPaddingBottom =
+    initialComputedStyles.getPropertyValue('padding-bottom')
 
-    return () => {
-        cleanupExistingElementAnimation(element);
-        const targetHeight = element.getBoundingClientRect().height;
-        const computedStyles = getComputedStyle(element);
-        const targetPaddingTop = computedStyles.getPropertyValue('padding-top');
-        const targetPaddingBottom = computedStyles.getPropertyValue('padding-bottom');
-        const animStyles = {
-            height: [`${startHeight}px`, `${targetHeight}px`],
-            overflow: ['hidden', 'hidden'],
-            paddingTop: [startPaddingTop, targetPaddingTop],
-            paddingBottom: [startPaddingBottom, targetPaddingBottom],
-        };
+  return () => {
+    cleanupExistingElementAnimation(element)
+    const targetHeight = element.getBoundingClientRect().height
+    const computedStyles = getComputedStyle(element)
+    const targetPaddingTop = computedStyles.getPropertyValue('padding-top')
+    const targetPaddingBottom =
+      computedStyles.getPropertyValue('padding-bottom')
+    const animStyles = {
+      height: [`${startHeight}px`, `${targetHeight}px`],
+      overflow: ['hidden', 'hidden'],
+      paddingTop: [startPaddingTop, targetPaddingTop],
+      paddingBottom: [startPaddingBottom, targetPaddingBottom]
+    }
 
-        animateStyles(element, animStyles, animTime);
-    };
+    animateStyles(element, animStyles, animTime)
+  }
 }
 
 /**
@@ -123,40 +136,40 @@ export function transitionHeight(element, animTime = 400) {
  * @param {Number} animTime
  * @param {Function} onComplete
  */
-function animateStyles(element, styles, animTime = 400, onComplete = null) {
-    const styleNames = Object.keys(styles);
-    for (let style of styleNames) {
-        element.style[style] = styles[style][0];
+function animateStyles (element, styles, animTime = 400, onComplete = null) {
+  const styleNames = Object.keys(styles)
+  for (const style of styleNames) {
+    element.style[style] = styles[style][0]
+  }
+
+  const cleanup = () => {
+    for (const style of styleNames) {
+      element.style[style] = null
+    }
+    element.style.transition = null
+    element.removeEventListener('transitionend', cleanup)
+    animateStylesCleanupMap.delete(element)
+    if (onComplete) onComplete()
+  }
+
+  setTimeout(() => {
+    element.style.transition = `all ease-in-out ${animTime}ms`
+    for (const style of styleNames) {
+      element.style[style] = styles[style][1]
     }
 
-    const cleanup = () => {
-        for (let style of styleNames) {
-            element.style[style] = null;
-        }
-        element.style.transition = null;
-        element.removeEventListener('transitionend', cleanup);
-        animateStylesCleanupMap.delete(element);
-        if (onComplete) onComplete();
-    };
-
-    setTimeout(() => {
-        element.style.transition = `all ease-in-out ${animTime}ms`;
-        for (let style of styleNames) {
-            element.style[style] = styles[style][1];
-        }
-
-        element.addEventListener('transitionend', cleanup);
-        animateStylesCleanupMap.set(element, cleanup);
-    }, 15);
+    element.addEventListener('transitionend', cleanup)
+    animateStylesCleanupMap.set(element, cleanup)
+  }, 15)
 }
 
 /**
  * Run the active cleanup action for the given element.
  * @param {Element} element
  */
-function cleanupExistingElementAnimation(element) {
-    if (animateStylesCleanupMap.has(element)) {
-        const oldCleanup = animateStylesCleanupMap.get(element);
-        oldCleanup();
-    }
+function cleanupExistingElementAnimation (element) {
+  if (animateStylesCleanupMap.has(element)) {
+    const oldCleanup = animateStylesCleanupMap.get(element)
+    oldCleanup()
+  }
 }

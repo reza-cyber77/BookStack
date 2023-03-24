@@ -28,8 +28,8 @@
     }
   }
 }
-@include spacing('margin', 'm');
-@include spacing('padding', 'p');
+@include spacing("margin", "m");
+@include spacing("padding", "p");
 
 @each $sizeLetter, $size in $spacing {
   .gap-#{$sizeLetter} {

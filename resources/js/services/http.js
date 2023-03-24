@@ -1,4 +1,3 @@
-
 /**
  * Perform a HTTP GET request.
  * Can easily pass query parameters as the second parameter.
@@ -6,11 +5,11 @@
  * @param {Object} params
  * @returns {Promise<{headers: Headers, original: Response, data: (Object|String), redirected: boolean, statusText: string, url: string, status: number}>}
  */
-async function get(url, params = {}) {
-    return request(url, {
-        method: 'GET',
-        params,
-    });
+async function get (url, params = {}) {
+  return request(url, {
+    method: 'GET',
+    params
+  })
 }
 
 /**
@@ -19,8 +18,8 @@ async function get(url, params = {}) {
  * @param {Object} data
  * @returns {Promise<{headers: Headers, original: Response, data: (Object|String), redirected: boolean, statusText: string, url: string, status: number}>}
  */
-async function post(url, data = null) {
-    return dataRequest('POST', url, data);
+async function post (url, data = null) {
+  return dataRequest('POST', url, data)
 }
 
 /**
@@ -29,8 +28,8 @@ async function post(url, data = null) {
  * @param {Object} data
  * @returns {Promise<{headers: Headers, original: Response, data: (Object|String), redirected: boolean, statusText: string, url: string, status: number}>}
  */
-async function put(url, data = null) {
-    return dataRequest('PUT', url, data);
+async function put (url, data = null) {
+  return dataRequest('PUT', url, data)
 }
 
 /**
@@ -39,8 +38,8 @@ async function put(url, data = null) {
  * @param {Object} data
  * @returns {Promise<{headers: Headers, original: Response, data: (Object|String), redirected: boolean, statusText: string, url: string, status: number}>}
  */
-async function patch(url, data = null) {
-    return dataRequest('PATCH', url, data);
+async function patch (url, data = null) {
+  return dataRequest('PATCH', url, data)
 }
 
 /**
@@ -49,8 +48,8 @@ async function patch(url, data = null) {
  * @param {Object} data
  * @returns {Promise<{headers: Headers, original: Response, data: (Object|String), redirected: boolean, statusText: string, url: string, status: number}>}
  */
-async function performDelete(url, data = null) {
-    return dataRequest('DELETE', url, data);
+async function performDelete (url, data = null) {
+  return dataRequest('DELETE', url, data)
 }
 
 /**
@@ -61,30 +60,30 @@ async function performDelete(url, data = null) {
  * @param {Object} data
  * @returns {Promise<{headers: Headers, original: Response, data: (Object|String), redirected: boolean, statusText: string, url: string, status: number}>}
  */
-async function dataRequest(method, url, data = null) {
-    const options = {
-        method: method,
-        body: data,
-    };
+async function dataRequest (method, url, data = null) {
+  const options = {
+    method,
+    body: data
+  }
 
-    // Send data as JSON if a plain object
-    if (typeof data === 'object' && !(data instanceof FormData)) {
-        options.headers = {
-            'Content-Type': 'application/json',
-            'X-Requested-With': 'XMLHttpRequest',
-        };
-        options.body = JSON.stringify(data);
+  // Send data as JSON if a plain object
+  if (typeof data === 'object' && !(data instanceof FormData)) {
+    options.headers = {
+      'Content-Type': 'application/json',
+      'X-Requested-With': 'XMLHttpRequest'
     }
+    options.body = JSON.stringify(data)
+  }
 
-    // Ensure FormData instances are sent over POST
-    // Since Laravel does not read multipart/form-data from other types
-    // of request. Hence the addition of the magic _method value.
-    if (data instanceof FormData && method !== 'post') {
-        data.append('_method', method);
-        options.method = 'post';
-    }
+  // Ensure FormData instances are sent over POST
+  // Since Laravel does not read multipart/form-data from other types
+  // of request. Hence the addition of the magic _method value.
+  if (data instanceof FormData && method !== 'post') {
+    data.append('_method', method)
+    options.method = 'post'
+  }
 
-    return request(url, options)
+  return request(url, options)
 }
 
 /**
@@ -94,48 +93,50 @@ async function dataRequest(method, url, data = null) {
  * @param {Object} options
  * @returns {Promise<{headers: Headers, original: Response, data: (Object|String), redirected: boolean, statusText: string, url: string, status: number}>}
  */
-async function request(url, options = {}) {
-    if (!url.startsWith('http')) {
-        url = window.baseUrl(url);
+async function request (url, options = {}) {
+  if (!url.startsWith('http')) {
+    url = window.baseUrl(url)
+  }
+
+  if (options.params) {
+    const urlObj = new URL(url)
+    for (const paramName of Object.keys(options.params)) {
+      const value = options.params[paramName]
+      if (typeof value !== 'undefined' && value !== null) {
+        urlObj.searchParams.set(paramName, value)
+      }
     }
+    url = urlObj.toString()
+  }
 
-    if (options.params) {
-        const urlObj = new URL(url);
-        for (let paramName of Object.keys(options.params)) {
-            const value = options.params[paramName];
-            if (typeof value !== 'undefined' && value !== null) {
-                urlObj.searchParams.set(paramName, value);
-            }
-        }
-        url = urlObj.toString();
-    }
+  const csrfToken = document
+    .querySelector('meta[name=token]')
+    .getAttribute('content')
+  options = Object.assign({}, options, {
+    credentials: 'same-origin'
+  })
+  options.headers = Object.assign({}, options.headers || {}, {
+    baseURL: window.baseUrl(''),
+    'X-CSRF-TOKEN': csrfToken
+  })
 
-    const csrfToken = document.querySelector('meta[name=token]').getAttribute('content');
-    options = Object.assign({}, options, {
-        'credentials': 'same-origin',
-    });
-    options.headers = Object.assign({}, options.headers || {}, {
-        'baseURL': window.baseUrl(''),
-        'X-CSRF-TOKEN': csrfToken,
-    });
+  const response = await fetch(url, options)
+  const content = await getResponseContent(response)
+  const returnData = {
+    data: content,
+    headers: response.headers,
+    redirected: response.redirected,
+    status: response.status,
+    statusText: response.statusText,
+    url: response.url,
+    original: response
+  }
 
-    const response = await fetch(url, options);
-    const content = await getResponseContent(response);
-    const returnData = {
-        data: content,
-        headers: response.headers,
-        redirected: response.redirected,
-        status: response.status,
-        statusText: response.statusText,
-        url: response.url,
-        original: response,
-    };
+  if (!response.ok) {
+    throw new HttpError(response, content)
+  }
 
-    if (!response.ok) {
-        throw new HttpError(response, content);
-    }
-
-    return returnData;
+  return returnData
 }
 
 /**
@@ -144,39 +145,39 @@ async function request(url, options = {}) {
  * @param {Response} response
  * @returns {Promise<Object|String>}
  */
-async function getResponseContent(response) {
-    if (response.status === 204) {
-        return null;
-    }
+async function getResponseContent (response) {
+  if (response.status === 204) {
+    return null
+  }
 
-    const responseContentType = response.headers.get('Content-Type') || '';
-    const subType = responseContentType.split(';')[0].split('/').pop();
+  const responseContentType = response.headers.get('Content-Type') || ''
+  const subType = responseContentType.split(';')[0].split('/').pop()
 
-    if (subType === 'javascript' || subType === 'json') {
-        return await response.json();
-    }
+  if (subType === 'javascript' || subType === 'json') {
+    return await response.json()
+  }
 
-    return await response.text();
+  return await response.text()
 }
 
 class HttpError extends Error {
-    constructor(response, content) {
-        super(response.statusText);
-        this.data = content;
-        this.headers = response.headers;
-        this.redirected = response.redirected;
-        this.status = response.status;
-        this.statusText = response.statusText;
-        this.url = response.url;
-        this.original = response;
-    }
+  constructor (response, content) {
+    super(response.statusText)
+    this.data = content
+    this.headers = response.headers
+    this.redirected = response.redirected
+    this.status = response.status
+    this.statusText = response.statusText
+    this.url = response.url
+    this.original = response
+  }
 }
 
 export default {
-    get: get,
-    post: post,
-    put: put,
-    patch: patch,
-    delete: performDelete,
-    HttpError: HttpError,
-};
+  get,
+  post,
+  put,
+  patch,
+  delete: performDelete,
+  HttpError
+}

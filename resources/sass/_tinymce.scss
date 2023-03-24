@@ -1,4 +1,3 @@
-
 // Custom full screen mode
 .tox.tox-fullscreen {
   position: fixed;
@@ -31,7 +30,7 @@
 }
 
 // Pad out bottom of editor
-body.page-content.mce-content-body  {
+body.page-content.mce-content-body {
   padding-bottom: 5rem;
 }
 
@@ -76,17 +75,17 @@ body.page-content.mce-content-body  {
 .dark-mode .tox .tox-dialog__footer,
 .dark-mode .tox .tox-pop__dialog,
 .dark-mode .tox.tox-tinymce-aux .tox-toolbar__overflow {
-    background-color: #333 !important;
+  background-color: #333 !important;
 }
 .dark-mode .tox .tox-tbtn svg,
 .dark-mode .tox .tox-tbtn,
-.dark-mode .tox .tox-collection--list .tox-collection__item--active:not(.tox-collection__item--state-disabled)
-{
+.dark-mode
+  .tox
+  .tox-collection--list
+  .tox-collection__item--active:not(.tox-collection__item--state-disabled) {
   color: #dbdbdb;
   fill: #dbdbdb;
 }
-
-
 
 /**
  * Format Menu Hacks
@@ -111,8 +110,8 @@ body.page-content.mce-content-body  {
 }
 .tox-menu .tox-collection__item[title^="<"] > div > div {
   font-family: $mono !important;
-  border: 1px solid #DDD !important;
-  background-color: #EEE !important;
+  border: 1px solid #ddd !important;
+  background-color: #eee !important;
   padding: 4px 6px !important;
 }
 .tox-menu .tox-collection__item-label {
@@ -130,9 +129,9 @@ body.page-content.mce-content-body  {
   display: none;
 }
 .page-content.mce-content-body .task-list-item:before {
-  content: '';
+  content: "";
   display: inline-block;
-  border: 2px solid #CCC;
+  border: 2px solid #ccc;
   width: 12px;
   height: 12px;
   border-radius: 2px;
@@ -145,7 +144,7 @@ body.page-content.mce-content-body  {
 }
 
 .page-content.mce-content-body .task-list-item[checked]:before {
-  background-color: #CCC;
+  background-color: #ccc;
   background-image: url('data:image/svg+xml;utf8,<svg fill="%23FFFFFF" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m8.4856 20.274-6.736-6.736 2.9287-2.7823 3.8073 3.8073 10.836-10.836 2.9287 2.9287z" stroke-width="1.4644"/></svg>');
   background-position: 50% 50%;
   background-size: 100% 100%;

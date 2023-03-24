@@ -9,12 +9,15 @@
 @import "lists";
 @import "pages";
 
-html, body {
-  background-color: #FFF;
+html,
+body {
+  background-color: #fff;
 }
 
 body {
-  font-family: 'DejaVu Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Roboto", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: "DejaVu Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Oxygen", "Ubuntu", "Roboto", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   margin: 0;
   padding: 0;
   display: block;
@@ -45,7 +48,7 @@ pre code {
 }
 @media screen {
   .page-break {
-    border-top: 1px solid #DDD;
+    border-top: 1px solid #ddd;
   }
 }
 
@@ -66,7 +69,12 @@ body.export-format-pdf {
   font-size: 14px;
   line-height: 1.2;
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     line-height: 1.2;
   }
 
@@ -84,12 +92,12 @@ body.export-format-pdf {
     float: none !important;
   }
 
-  .page-content img.align-left, .page-content img.align-right  {
+  .page-content img.align-left,
+  .page-content img.align-right {
     float: none !important;
     clear: both;
     display: block;
   }
-
 }
 
 // DOMPDF pdf export specific overrides

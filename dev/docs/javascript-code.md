@@ -12,19 +12,19 @@ This section details the format for JavaScript components in BookStack. This is 
 
 ```js
 class Dropdown {
-    setup() {
-        this.container = this.$el;
-        this.menu = this.$refs.menu;
-        this.toggles = this.$manyRefs.toggle;
-    
-        this.speed = parseInt(this.$opts.speed);
-    }
+  setup() {
+    this.container = this.$el;
+    this.menu = this.$refs.menu;
+    this.toggles = this.$manyRefs.toggle;
+
+    this.speed = parseInt(this.$opts.speed);
+  }
 }
 ```
 
 All usage of $refs, $manyRefs and $opts should be done at the top of the `setup` function so any requirements can be easily seen.
 
-Once defined, the component has to be registered for use. This is done in the `resources/js/components/index.js` file by defining an additional export, following the pattern of other components. 
+Once defined, the component has to be registered for use. This is done in the `resources/js/components/index.js` file by defining an additional export, following the pattern of other components.
 
 ### Using a Component in HTML
 
@@ -38,7 +38,7 @@ A component is used like so:
 <div components="dropdown image-picker"></div>
 ```
 
-The names will be parsed and new component instance will be created if a matching name is found in the `components/index.js` componentMapping. 
+The names will be parsed and new component instance will be created if a matching name is found in the `components/index.js` componentMapping.
 
 ### Element References
 
@@ -46,7 +46,7 @@ Within a component you'll often need to refer to other element instances. This c
 
 ```html
 <div component="dropdown">
-    <span refs="dropdown@toggle othercomponent@handle">View more</span>
+  <span refs="dropdown@toggle othercomponent@handle">View more</span>
 </div>
 ```
 
@@ -56,27 +56,28 @@ Multiple elements of the same reference name can be accessed via a `this.$manyRe
 
 ```html
 <div component="list">
-    <button refs="list@button">Click here</button>
-    <button refs="list@button">No, Click here</button>
-    <button refs="list@button">This button is better</button>
+  <button refs="list@button">Click here</button>
+  <button refs="list@button">No, Click here</button>
+  <button refs="list@button">This button is better</button>
 </div>
 ```
 
 ### Component Options
 
 ```html
-<div component="dropdown"
-    option:dropdown:delay="500"
-    option:dropdown:show>
-</div>
+<div
+  component="dropdown"
+  option:dropdown:delay="500"
+  option:dropdown:show
+></div>
 ```
 
 Will result with `this.$opts` being:
 
 ```json
 {
-    "delay": "500",
-    "show": ""  
+  "delay": "500",
+  "show": ""
 }
 ```
 
@@ -86,32 +87,32 @@ A component has the below shown properties & methods available for use. As menti
 
 ```javascript
 // The root element that the compontent has been applied to.
-this.$el
+this.$el;
 
 // A map of defined element references within the compontent.
 // See "Element References" above.
-this.$refs
+this.$refs;
 
 // A map of defined multi-element references within the compontent.
 // See "Element References" above.
-this.$manyRefs
+this.$manyRefs;
 
 // Options defined for the compontent.
-this.$opts
+this.$opts;
 
 // The registered name of the component, usually kebab-case.
-this.$name
+this.$name;
 
 // Emit a custom event from this component.
-// Will be bubbled up from the dom element this is registered on, 
+// Will be bubbled up from the dom element this is registered on,
 // as a custom event with the name `<elementName>-<eventName>`,
 // with the provided data in the event detail.
-this.$emit(eventName, data = {})
+this.$emit(eventName, (data = {}));
 ```
 
 ## Global JavaScript Helpers
 
-There are various global helper libraries in BookStack which can be accessed via the `window`. The below provides an overview of what's available. 
+There are various global helper libraries in BookStack which can be accessed via the `window`. The below provides an overview of what's available.
 
 ```js
 // HTTP service
@@ -148,7 +149,7 @@ window.$components.init(rootEl);
 window.$components.register(mapping);
 // Get the first active component of the given name.
 window.$components.first(name);
-// Get all the active components of the given name. 
+// Get all the active components of the given name.
 window.$components.get(name);
 // Get the first active component of the given name that's been
 // created on the given element.

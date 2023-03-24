@@ -1,7 +1,7 @@
 <?php
     $selectedSort = (isset($sort) && array_key_exists($sort, $options)) ? $sort : array_keys($options)[0];
     $order = (isset($order) && in_array($order, ['asc', 'desc'])) ? $order : 'asc';
-?>
+    ?>
 <div component="list-sort-control" class="list-sort-container">
     <div class="list-sort-label">{{ trans('common.sort') }}</div>
     <form refs="list-sort-control@form"

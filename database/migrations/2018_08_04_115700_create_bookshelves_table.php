@@ -5,8 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      *
@@ -14,7 +13,6 @@ return new class extends Migration
      */
     public function up()
     {
-
         // Convert the existing entity tables to InnoDB.
         // Wrapped in try-catch just in the event a different database system is used
         // which does not support InnoDB but does support all required features

@@ -1,36 +1,33 @@
-import {Markdown} from "./markdown";
-import {Display} from "./display";
-import {Actions} from "./actions";
-import {Settings} from "./settings";
-import {listen} from "./common-events";
-import {init as initCodemirror} from "./codemirror";
-
+import { Markdown } from './markdown'
+import { Display } from './display'
+import { Actions } from './actions'
+import { Settings } from './settings'
+import { listen } from './common-events'
+import { init as initCodemirror } from './codemirror'
 
 /**
  * Initiate a new markdown editor instance.
  * @param {MarkdownEditorConfig} config
  * @returns {Promise<MarkdownEditor>}
  */
-export async function init(config) {
+export async function init (config) {
+  /**
+   * @type {MarkdownEditor}
+   */
+  const editor = {
+    config,
+    markdown: new Markdown(),
+    settings: new Settings(config.settingInputs)
+  }
 
-    /**
-     * @type {MarkdownEditor}
-     */
-    const editor = {
-        config,
-        markdown: new Markdown(),
-        settings: new Settings(config.settingInputs),
-    };
+  editor.actions = new Actions(editor)
+  editor.display = new Display(editor)
+  editor.cm = await initCodemirror(editor)
 
-    editor.actions = new Actions(editor);
-    editor.display = new Display(editor);
-    editor.cm = await initCodemirror(editor);
+  listen(editor)
 
-    listen(editor);
-
-    return editor;
+  return editor
 }
-
 
 /**
  * @typedef MarkdownEditorConfig

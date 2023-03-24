@@ -7,8 +7,8 @@ use Barryvdh\Snappy\Facades\SnappyPdf;
 
 class PdfGenerator
 {
-    const ENGINE_DOMPDF = 'dompdf';
-    const ENGINE_WKHTML = 'wkhtml';
+    public const ENGINE_DOMPDF = 'dompdf';
+    public const ENGINE_WKHTML = 'wkhtml';
 
     /**
      * Generate PDF content from the given HTML content.

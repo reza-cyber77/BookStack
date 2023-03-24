@@ -11,7 +11,7 @@
   }
 
   .mce-tinymce {
-	box-shadow: none;
+    box-shadow: none;
   }
 
   .mce-top-part::before {
@@ -24,8 +24,10 @@ body.markdown-fullscreen .page-editor .edit-area {
   z-index: 12;
 }
 
-body.tox-fullscreen, body.markdown-fullscreen {
-  .page-editor, .flex-fill {
+body.tox-fullscreen,
+body.markdown-fullscreen {
+  .page-editor,
+  .flex-fill {
     overflow: visible;
   }
 }
@@ -57,7 +59,7 @@ body.tox-fullscreen, body.markdown-fullscreen {
   background-color: currentColor;
   text-align: center;
   svg {
-    fill: #FFF;
+    fill: #fff;
     margin-inline-end: 0;
   }
 }
@@ -84,14 +86,16 @@ body.tox-fullscreen, body.markdown-fullscreen {
   .align-left {
     text-align: left;
   }
-  img.align-left, table.align-left {
+  img.align-left,
+  table.align-left {
     float: left !important;
     margin: $-xs $-m $-m 0;
   }
   .align-right {
     text-align: right !important;
   }
-  img.align-right, table.align-right {
+  img.align-right,
+  table.align-right {
     float: right !important;
     margin: $-xs 0 $-xs $-s;
   }
@@ -101,15 +105,22 @@ body.tox-fullscreen, body.markdown-fullscreen {
   img.align-center {
     display: block;
   }
-  img.align-center, table.align-center {
+  img.align-center,
+  table.align-center {
     margin-left: auto;
     margin-right: auto;
   }
   img {
     max-width: 100%;
-    height:auto;
+    height: auto;
   }
-  h1, h2, h3, h4, h5, h6, pre {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  pre {
     clear: left;
   }
   hr {
@@ -132,12 +143,12 @@ body.tox-fullscreen, body.markdown-fullscreen {
     background: #dbffdb;
   }
   del {
-    background: #FFECEC;
+    background: #ffecec;
   }
 
   details {
     border: 1px solid;
-    @include lightDark(border-color, #DDD, #555);
+    @include lightDark(border-color, #ddd, #555);
     margin-bottom: 1em;
     padding: $-s;
   }
@@ -147,19 +158,19 @@ body.tox-fullscreen, body.markdown-fullscreen {
     margin-right: -$-s;
     margin-bottom: -$-s;
     font-weight: bold;
-    @include lightDark(background-color, #EEE, #333);
+    @include lightDark(background-color, #eee, #333);
     padding: $-xs $-s;
   }
   details[open] > summary {
     margin-bottom: $-s;
     border-bottom: 1px solid;
-    @include lightDark(border-color, #DDD, #555);
+    @include lightDark(border-color, #ddd, #555);
   }
   details > summary + * {
-    margin-top: .2em;
+    margin-top: 0.2em;
   }
   details:after {
-    content: '';
+    content: "";
     display: block;
     clear: both;
   }
@@ -188,7 +199,7 @@ body.tox-fullscreen, body.markdown-fullscreen {
   z-index: 10;
 }
 .pointer {
-  border: 1px solid #CCC;
+  border: 1px solid #ccc;
   @include lightDark(border-color, #ccc, #000);
   display: flex;
   align-items: center;
@@ -210,17 +221,19 @@ body.tox-fullscreen, body.markdown-fullscreen {
     width: 16px;
     height: 16px;
     margin-inline-start: -8px;
-    content: '';
+    content: "";
     display: block;
     transform: rotate(45deg);
     transform-origin: 50% 50%;
-    border-block-end: 1px solid #CCC;
-    border-inline-end: 1px solid #CCC;
+    border-block-end: 1px solid #ccc;
+    border-inline-end: 1px solid #ccc;
     z-index: 56;
     @include lightDark(background-color, #fff, #333);
     @include lightDark(border-color, #ccc, #000);
   }
-  input, button, a {
+  input,
+  button,
+  a {
     position: relative;
     border-radius: 0;
     height: 28px;
@@ -229,8 +242,8 @@ body.tox-fullscreen, body.markdown-fullscreen {
     padding: 5px 16px;
   }
   input {
-    background-color: #FFF;
-    border: 1px solid #DDD;
+    background-color: #fff;
+    border: 1px solid #ddd;
     @include lightDark(border-color, #ddd, #000);
     color: #666;
     width: 172px;
@@ -263,10 +276,10 @@ body.tox-fullscreen, body.markdown-fullscreen {
 
 // Attribute form
 .floating-toolbox {
-  border: 1px solid #DDD;
+  border: 1px solid #ddd;
   @include lightDark(background-color, #fff, #222);
-  @include lightDark(border-color, #DDD, #000);
-  right: $-xl*2;
+  @include lightDark(border-color, #ddd, #000);
+  right: $-xl * 2;
   width: 48px;
   overflow: hidden;
   align-items: stretch;
@@ -296,7 +309,7 @@ body.tox-fullscreen, body.markdown-fullscreen {
   }
   .tabs {
     display: block;
-    border-inline-end: 1px solid #DDD;
+    border-inline-end: 1px solid #ddd;
     @include lightDark(border-color, #ddd, #000);
     width: 48px;
     flex: 0 1 auto;
@@ -315,7 +328,7 @@ body.tox-fullscreen, body.markdown-fullscreen {
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   }
   &.open .tabs > button.active {
-    @include lightDark(color, #444, #EEE);
+    @include lightDark(color, #444, #eee);
     background-color: rgba(0, 0, 0, 0.1);
   }
   h4 {
@@ -328,7 +341,8 @@ body.tox-fullscreen, body.markdown-fullscreen {
     width: 100%;
     min-width: 50px;
   }
-  .tags td, .inline-start-table > div > div > div {
+  .tags td,
+  .inline-start-table > div > div > div {
     padding-inline-end: $-s;
     padding-top: $-s;
     position: relative;
@@ -344,7 +358,8 @@ body.tox-fullscreen, body.markdown-fullscreen {
     flex-direction: column;
     overflow-y: scroll;
   }
-  table td, table th {
+  table td,
+  table th {
     overflow: visible;
   }
 }
@@ -363,7 +378,7 @@ body.tox-fullscreen, body.markdown-fullscreen {
   padding: 0;
   li {
     display: block;
-    border-bottom: 1px solid #DDD;
+    border-bottom: 1px solid #ddd;
     &:last-child {
       border-bottom: 0;
     }
@@ -376,7 +391,8 @@ body.tox-fullscreen, body.markdown-fullscreen {
   margin-top: 0.5em;
 }
 
-.comment-editor .CodeMirror, .comment-editor .CodeMirror-scroll {
+.comment-editor .CodeMirror,
+.comment-editor .CodeMirror-scroll {
   min-height: 175px;
 }
 
@@ -407,7 +423,7 @@ body.tox-fullscreen, body.markdown-fullscreen {
     bottom: 0;
   }
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     background-color: currentColor;
     opacity: 0.2;
@@ -432,7 +448,7 @@ body.tox-fullscreen, body.markdown-fullscreen {
   opacity: 0.85;
   transition: opacity ease-in-out 120ms;
   &:after {
-    content: '';
+    content: "";
     position: absolute;
     background-color: currentColor;
     opacity: 0.15;

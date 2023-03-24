@@ -6,8 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class () extends Migration {
     /**
      * Run the migrations.
      *
@@ -48,10 +47,10 @@ return new class extends Migration
             'restrictable_id as entity_id',
             'restrictable_type as entity_type',
             'role_id',
-            'view'   => fn(Builder $query) => $subSelect($query, 'view', 'b'),
-            'create' => fn(Builder $query) => $subSelect($query, 'create', 'c'),
-            'update' => fn(Builder $query) => $subSelect($query, 'update', 'd'),
-            'delete' => fn(Builder $query) => $subSelect($query, 'delete', 'e'),
+            'view'   => fn (Builder $query) => $subSelect($query, 'view', 'b'),
+            'create' => fn (Builder $query) => $subSelect($query, 'create', 'c'),
+            'update' => fn (Builder $query) => $subSelect($query, 'update', 'd'),
+            'delete' => fn (Builder $query) => $subSelect($query, 'delete', 'e'),
         ])->groupBy('restrictable_id', 'restrictable_type', 'role_id');
 
         DB::table('new_entity_permissions')->insertUsing(['entity_id', 'entity_type', 'role_id', 'view', 'create', 'update', 'delete'], $query);
@@ -92,9 +91,9 @@ return new class extends Migration
         };
 
         $query = $actionQuery(DB::query(), 'view')
-            ->union(fn(Builder $query) => $actionQuery($query, 'create'))
-            ->union(fn(Builder $query) => $actionQuery($query, 'update'))
-            ->union(fn(Builder $query) => $actionQuery($query, 'delete'));
+            ->union(fn (Builder $query) => $actionQuery($query, 'create'))
+            ->union(fn (Builder $query) => $actionQuery($query, 'update'))
+            ->union(fn (Builder $query) => $actionQuery($query, 'delete'));
 
         DB::table('old_entity_permissions')->insertUsing(['restrictable_id', 'restrictable_type', 'role_id', 'action'], $query);
 

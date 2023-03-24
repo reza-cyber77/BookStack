@@ -18,8 +18,8 @@ class MfaValue extends Model
 {
     protected static $unguarded = true;
 
-    const METHOD_TOTP = 'totp';
-    const METHOD_BACKUP_CODES = 'backup_codes';
+    public const METHOD_TOTP = 'totp';
+    public const METHOD_BACKUP_CODES = 'backup_codes';
 
     /**
      * Get all the MFA methods available.

@@ -11,7 +11,14 @@ $xs: 400px;
 $xxs: 360px;
 
 // List of screen sizes
-$screen-sizes: (('xxs', $xxs), ('xs', $xs), ('s', $s), ('m', $m), ('l', $l), ('xl', $xl));
+$screen-sizes: (
+  ("xxs", $xxs),
+  ("xs", $xs),
+  ("s", $s),
+  ("m", $m),
+  ("l", $l),
+  ("xl", $xl)
+);
 
 // Spacing (Margins+Padding)
 $-xxxl: 64px;
@@ -24,13 +31,21 @@ $-xs: 6px;
 $-xxs: 3px;
 
 // List of our spacing sizes
-$spacing: (('none', 0), ('xxs', $-xxs), ('xs', $-xs), ('s', $-s), ('m', $-m), ('l', $-l), ('xl', $-xl), ('xxl', $-xxl), ('auto', auto));
+$spacing: (
+  ("none", 0),
+  ("xxs", $-xxs),
+  ("xs", $-xs),
+  ("s", $-s),
+  ("m", $-m),
+  ("l", $-l),
+  ("xl", $-xl),
+  ("xxl", $-xxl),
+  ("auto", auto)
+);
 
 // Fonts
-$text: -apple-system, BlinkMacSystemFont,
-"Segoe UI", "Oxygen", "Ubuntu", "Roboto", "Cantarell",
-"Fira Sans", "Droid Sans", "Helvetica Neue",
-sans-serif;
+$text: -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu",
+  "Roboto", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 $mono: "Lucida Console", "DejaVu Sans Mono", "Ubuntu Mono", Monaco, monospace;
 $fs-m: 14px;
 $fs-s: 12px;
@@ -38,7 +53,7 @@ $fs-s: 12px;
 // Colours
 :root {
   --color-primary: #206ea7;
-  --color-primary-light: rgba(32,110,167,0.15);
+  --color-primary-light: rgba(32, 110, 167, 0.15);
   --color-link: #206ea7;
 
   --color-page: #206ea7;
@@ -60,17 +75,17 @@ $fs-s: 12px;
 
 $positive: #0f7d15;
 $negative: #ab0f0e;
-$info: #0288D1;
+$info: #0288d1;
 $warning: #cf4d03;
 
 // Text colours
 $text-dark: #444;
 
 // Shadows
-$bs-light: 0 0 4px 1px #CCC;
+$bs-light: 0 0 4px 1px #ccc;
 $bs-dark: 0 0 4px 1px rgba(0, 0, 0, 0.5);
 $bs-med: 0 1px 3px 1px rgba(76, 76, 76, 0.26);
 $bs-large: 0 1px 6px 1px rgba(22, 22, 22, 0.2);
 $bs-card: 0 1px 6px -1px rgba(0, 0, 0, 0.1);
 $bs-card-dark: 0 1px 6px -1px rgba(0, 0, 0, 0.5);
-$bs-hover: 0 2px 2px 1px rgba(0,0,0,.13);
+$bs-hover: 0 2px 2px 1px rgba(0, 0, 0, 0.13);

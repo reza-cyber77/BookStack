@@ -6,7 +6,7 @@ This theme system itself is maintained and supported but usages of this system, 
 
 ## Getting Started
 
-*[Video Guide](https://www.youtube.com/watch?v=gLy_2GBse48)*
+_[Video Guide](https://www.youtube.com/watch?v=gLy_2GBse48)_
 
 This makes use of the theme system. Create a folder for your theme within your BookStack `themes` directory. As an example we'll use `my_theme`, so we'd create a `themes/my_theme` folder.
 You'll need to tell BookStack to use your theme via the `APP_THEME` option in your `.env` file. For example: `APP_THEME=my_theme`.
@@ -14,11 +14,11 @@ You'll need to tell BookStack to use your theme via the `APP_THEME` option in yo
 ## Customizing View Files
 
 Content placed in your `themes/<theme_name>/` folder will override the original view files found in the `resources/views` folder. These files are typically [Laravel Blade](https://laravel.com/docs/8.x/blade) files.
-As an example, I could override the `resources/views/books/parts/list-item.blade.php` file with my own template at the path `themes/<theme_name>/books/parts/list-item.blade.php`. 
+As an example, I could override the `resources/views/books/parts/list-item.blade.php` file with my own template at the path `themes/<theme_name>/books/parts/list-item.blade.php`.
 
 ## Customizing Icons
 
-SVG files placed in a `themes/<theme_name>/icons` folder will override any icons of the same name within `resources/icons`. You'd typically want to follow the format convention of the existing icons, where no XML deceleration is included and no width & height attributes are set, to ensure optimal compatibility. 
+SVG files placed in a `themes/<theme_name>/icons` folder will override any icons of the same name within `resources/icons`. You'd typically want to follow the format convention of the existing icons, where no XML deceleration is included and no width & height attributes are set, to ensure optimal compatibility.
 
 ## Customizing Text Content
 

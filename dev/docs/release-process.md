@@ -21,4 +21,4 @@ Feature releases, and some patch releases, will be accompanied by a post on the 
 ### Release Technical Process
 
 Deploying a release, at a high level, simply involves merging the development branch into the release branch before then building & committing any release-only assets.
-A helper script [can be found in our](https://github.com/BookStackApp/devops/blob/main/meta-scripts/bookstack-release-steps) devops repo which provides the steps and commands for deploying a new release. 
+A helper script [can be found in our](https://github.com/BookStackApp/devops/blob/main/meta-scripts/bookstack-release-steps) devops repo which provides the steps and commands for deploying a new release.

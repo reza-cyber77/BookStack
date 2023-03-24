@@ -1,24 +1,26 @@
-
 .input-base {
   border-radius: 3px;
-  border: 1px solid #D4D4D4;
+  border: 1px solid #d4d4d4;
   @include lightDark(background-color, #fff, #333);
   @include lightDark(border-color, #d4d4d4, #111);
-  @include lightDark(color, #666, #AAA);
+  @include lightDark(color, #666, #aaa);
   display: inline-block;
   font-size: $fs-m;
-  padding: $-xs*1.8;
+  padding: $-xs * 1.8;
   height: 40px;
   width: 250px;
   max-width: 100%;
 
-  &.neg, &.invalid {
+  &.neg,
+  &.invalid {
     border: 1px solid $negative;
   }
-  &.pos, &.valid {
+  &.pos,
+  &.valid {
     border: 1px solid $positive;
   }
-  &.disabled, &[disabled] {
+  &.disabled,
+  &[disabled] {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAMUlEQVQIW2NkwAGuXbv2nxGbHEhCS0uLEUMSJgHShCKJLIEiiS4Bl8QmAZbEJQGSBAC62BuJ+tt7zgAAAABJRU5ErkJggg==);
   }
   &[readonly] {
@@ -70,8 +72,8 @@
 }
 
 .markdown-editor-wrap {
-  border-top: 1px solid #DDD;
-  border-bottom: 1px solid #DDD;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
   @include lightDark(border-color, #ddd, #000);
   position: relative;
   flex: 1;
@@ -100,7 +102,7 @@
   }
   .editor-toolbar-label {
     float: none !important;
-    @include lightDark(border-color, #DDD, #555);
+    @include lightDark(border-color, #ddd, #555);
     display: block;
   }
   .markdown-editor-wrap:not(.active) .editor-toolbar + div,
@@ -140,14 +142,14 @@ html.markdown-editor-display.dark-mode {
   width: 100%;
   font-size: 11px;
   line-height: 1.6;
-  border-bottom: 1px solid #DDD;
-  background-color: #EEE;
+  border-bottom: 1px solid #ddd;
+  background-color: #eee;
   @include lightDark(background-color, #eee, #111);
   @include lightDark(border-color, #ddd, #000);
   flex: none;
   @include whenDark {
     button {
-      color: #AAA;
+      color: #aaa;
     }
   }
 }
@@ -163,19 +165,18 @@ html.markdown-editor-display.dark-mode {
 }
 
 .editor-toolbar .buttons button {
-  font-size: .9rem;
+  font-size: 0.9rem;
   width: 2rem;
   text-align: center;
   border-left: 1px solid;
-  @include lightDark(border-color, #DDD, #555);
+  @include lightDark(border-color, #ddd, #555);
   svg {
     margin-inline-end: 0;
   }
   &:hover {
-    @include lightDark(background-color, #DDD, #222);
+    @include lightDark(background-color, #ddd, #222);
   }
 }
-
 
 label {
   @include lightDark(color, #666, #ddd);
@@ -190,10 +191,12 @@ label {
   }
 }
 
-label.radio, label.checkbox {
+label.radio,
+label.checkbox {
   font-weight: 400;
   user-select: none;
-  input[type="radio"], input[type="checkbox"] {
+  input[type="radio"],
+  input[type="checkbox"] {
     margin-inline-end: $-xs;
   }
 }
@@ -214,8 +217,16 @@ table.form-table {
   }
 }
 
-input[type="text"], input[type="number"], input[type="email"], input[type="date"], input[type="search"], input[type="url"],
-input[type="color"], input[type="password"], select, textarea {
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="date"],
+input[type="search"],
+input[type="url"],
+input[type="color"],
+input[type="password"],
+select,
+textarea {
   @extend .input-base;
 }
 
@@ -233,11 +244,11 @@ select {
   }
 }
 
-input[type=date] {
+input[type="date"] {
   width: 190px;
 }
 
-input[type=color] {
+input[type="color"] {
   height: 60px;
   &.small {
     height: 42px;
@@ -272,21 +283,21 @@ input[type=color] {
       transform-origin: center center;
     }
   }
-  input[type=checkbox] {
+  input[type="checkbox"] {
     display: none;
   }
-  input[type=checkbox]:checked + .custom-checkbox .svg-icon {
+  input[type="checkbox"]:checked + .custom-checkbox .svg-icon {
     transform: scale(1);
   }
   .custom-checkbox:hover {
     background-color: rgba(0, 0, 0, 0.05);
     opacity: 0.8;
   }
-  input[type=checkbox][disabled] ~ * {
+  input[type="checkbox"][disabled] ~ * {
     opacity: 0.8;
     cursor: not-allowed;
   }
-  input[type=checkbox][disabled] ~ .custom-checkbox {
+  input[type="checkbox"][disabled] ~ .custom-checkbox {
     border-color: #999;
     color: #999 !important;
     background: #f2f2f2;
@@ -306,7 +317,7 @@ input[type=color] {
 }
 
 .setting-list > div {
-  border-bottom: 1px solid #DDD;
+  border-bottom: 1px solid #ddd;
   padding: $-xl 0;
   &:last-child {
     border-bottom: none;
@@ -323,14 +334,18 @@ input[type=color] {
   margin-top: $-m;
 }
 
-.setting-list .grid, .stretch-inputs {
-  input[type=text], input[type=email], input[type=password], select {
+.setting-list .grid,
+.stretch-inputs {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  select {
     width: 100%;
   }
 }
 
 .simple-code-input {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   font-family: monospace;
   font-size: 12px;
   min-height: 100px;
@@ -339,7 +354,10 @@ input[type=color] {
 }
 
 .form-group {
-  div.text-pos, div.text-neg, p.text-post, p.text-neg {
+  div.text-pos,
+  div.text-neg,
+  p.text-post,
+  p.text-neg {
     padding: $-xs 0;
   }
 }
@@ -347,7 +365,7 @@ input[type=color] {
 .form-group.collapsible {
   padding: 0 $-m;
   border: 1px solid;
-  @include lightDark(border-color, #DDD, #000);
+  @include lightDark(border-color, #ddd, #000);
   border-radius: 4px;
   .collapse-title {
     margin-inline-start: -$-m;
@@ -357,7 +375,8 @@ input[type=color] {
     width: calc(100% + 32px);
     text-align: start;
   }
-  .collapse-title, .collapse-title label {
+  .collapse-title,
+  .collapse-title label {
     cursor: pointer;
   }
   .collapse-title label {
@@ -367,7 +386,7 @@ input[type=color] {
   }
   .collapse-title label:before {
     display: inline-block;
-    content: '▸';
+    content: "▸";
     margin-inline-end: $-m;
     transition: all ease-in-out 400ms;
     transform: rotate(0);
@@ -431,7 +450,7 @@ div[editor-type="markdown"] .title-input.page-title input[type="text"] {
   button[tabindex="-1"] {
     background-color: transparent;
     border: none;
-    @include lightDark(color, #666, #AAA);
+    @include lightDark(color, #666, #aaa);
     padding: 0;
     cursor: pointer;
     position: absolute;
@@ -461,18 +480,18 @@ div[editor-type="markdown"] .title-input.page-title input[type="text"] {
 
 .outline > input {
   border: 0;
-  border-bottom: 2px solid #DDD;
+  border-bottom: 2px solid #ddd;
   border-radius: 0;
-  &:focus, &:active {
+  &:focus,
+  &:active {
     border: 0;
-    border-bottom: 2px solid #AAA;
+    border-bottom: 2px solid #aaa;
     outline: 0;
   }
 }
 
-
 .image-picker img {
-  background-color: #BBB;
+  background-color: #bbb;
   max-width: 100%;
 }
 

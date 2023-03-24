@@ -11,7 +11,7 @@ file within this project.
 ### Convention
 
 Views are broken down into rough domain areas. These aren't too strict although many of the folders
-here will often match up to a HTTP controller. 
+here will often match up to a HTTP controller.
 
 Within each folder views will be structured like so:
 
@@ -30,7 +30,7 @@ Within each folder views will be structured like so:
             - subdomain-partial-b.blade.php
 ```
 
-If a folder contains no pages at all (For example: `attachments`, `form`) and only partials, then 
+If a folder contains no pages at all (For example: `attachments`, `form`) and only partials, then
 the partials can be within the top-level folder instead of pages to prevent unneeded nesting.
 
 If a partial depends on another partial within the same directory, the naming of the child partials should be an extension of the parent.

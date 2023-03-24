@@ -1,4 +1,3 @@
-
 .book-contents .entity-list-item {
   .icon {
     width: 4px;
@@ -43,7 +42,7 @@
       width: 100%;
       height: 1px;
       background-color: currentColor;
-      content: '';
+      content: "";
       opacity: 0.5;
     }
     &:after {
@@ -91,7 +90,7 @@
   @include margin($-s, 0, $-m, $-xs);
   position: relative;
   &:after {
-    content: '';
+    content: "";
     display: block;
     position: absolute;
     left: 0;
@@ -99,7 +98,11 @@
       left: auto;
       right: 0;
     }
-    @include lightDark(background-color, rgba(0, 0, 0, 0.2), rgba(255, 255, 255, 0.2));
+    @include lightDark(
+      background-color,
+      rgba(0, 0, 0, 0.2),
+      rgba(255, 255, 255, 0.2)
+    );
     width: 2px;
     top: 5px;
     bottom: 5px;
@@ -123,16 +126,16 @@
     padding-inline-start: $nav-indent * 2.5;
   }
   .h5 {
-    padding-inline-start: $nav-indent*3;
+    padding-inline-start: $nav-indent * 3;
   }
   .h6 {
-    padding-inline-start: $nav-indent*3.5;
+    padding-inline-start: $nav-indent * 3.5;
   }
   .current-heading {
     font-weight: bold;
   }
   li:not(.current-heading) .sidebar-page-nav-bullet {
-    @include lightDark(background-color, #BBB, #666, true);
+    @include lightDark(background-color, #bbb, #666, true);
   }
   .sidebar-page-nav-bullet {
     width: 6px;
@@ -141,8 +144,8 @@
     left: -2px;
     top: 30%;
     border-radius: 50%;
-    box-shadow: 0 0 0 6px #F2F2F2;
-    @include lightDark(box-shadow, 0 0 0 6px #F2F2F2, 0 0 0 6px #111);
+    box-shadow: 0 0 0 6px #f2f2f2;
+    @include lightDark(box-shadow, 0 0 0 6px #f2f2f2, 0 0 0 6px #111);
     z-index: 1;
     @include rtl {
       left: auto;
@@ -152,7 +155,7 @@
 }
 
 // Sidebar list
-.book-tree .sidebar-page-list  {
+.book-tree .sidebar-page-list {
   list-style: none;
   @include margin($-xs, -$-s, 0, -$-s);
   padding-inline-start: 0;
@@ -178,7 +181,11 @@
     }
   }
   .entity-list-item.selected {
-    @include lightDark(background-color, rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06));
+    @include lightDark(
+      background-color,
+      rgba(0, 0, 0, 0.06),
+      rgba(255, 255, 255, 0.06)
+    );
   }
   .entity-list-item.no-hover {
     margin-top: -$-xs;
@@ -190,8 +197,8 @@
     margin-inline-end: $-m;
   }
   .chapter-child-menu {
-    font-size: .8rem;
-    margin-top: -.2rem;
+    font-size: 0.8rem;
+    margin-top: -0.2rem;
     margin-inline-start: -1rem;
   }
   .chapter-contents-toggle {
@@ -204,7 +211,11 @@
     margin-top: -$-xxs;
     margin-bottom: -$-xxs;
     &:hover {
-      @include lightDark(background-color, rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06));
+      @include lightDark(
+        background-color,
+        rgba(0, 0, 0, 0.06),
+        rgba(255, 255, 255, 0.06)
+      );
     }
   }
   .entity-list-item .icon {
@@ -232,7 +243,8 @@
 }
 
 // Sortable Lists
-.sortable-page-list, .sortable-page-sublist {
+.sortable-page-list,
+.sortable-page-sublist {
   list-style: none;
 }
 .sort-box {
@@ -241,7 +253,7 @@
   position: relative;
   &::before {
     pointer-events: none;
-    content: '';
+    content: "";
     border-radius: 4px;
     opacity: 0.5;
     border: 2px solid var(--color-book);
@@ -267,7 +279,8 @@
   .entity-list-item > span:first-child {
     align-self: flex-start;
   }
-  .sortable-selected, .sortable-selected:hover {
+  .sortable-selected,
+  .sortable-selected:hover {
     outline: 1px dotted var(--color-primary);
     background-color: var(--color-primary-light) !important;
   }
@@ -284,13 +297,14 @@
     padding-inline-start: $-m;
   }
   li {
-    @include lightDark(background-color, #FFF, #222);
+    @include lightDark(background-color, #fff, #222);
     border: 1px solid;
-    @include lightDark(border-color, #DDD, #666);
+    @include lightDark(border-color, #ddd, #666);
     margin-top: -1px;
     min-height: 38px;
   }
-  li.text-page, li.text-chapter {
+  li.text-page,
+  li.text-chapter {
     border-inline-start: 2px solid currentColor;
   }
   li:first-child {
@@ -305,7 +319,7 @@
 }
 .sort-box summary {
   list-style: none;
-  font-size: .9rem;
+  font-size: 0.9rem;
   cursor: pointer;
 }
 .sort-box summary::-webkit-details-marker {
@@ -318,7 +332,7 @@ details.sort-box[open] summary .caret-container svg {
   transform: rotate(90deg);
 }
 .sort-box-actions .icon-button {
-  opacity: .6;
+  opacity: 0.6;
 }
 .sort-box .flex-container-row:hover .sort-box-actions .icon-button,
 .sort-box .flex-container-row:focus-within .sort-box-actions .icon-button {
@@ -366,19 +380,22 @@ ul.pagination {
     float: left;
   }
   li:first-child {
-    a, span {
+    a,
+    span {
       border-radius: 3px 0 0 3px;
     }
   }
   li:last-child {
-    a, span {
+    a,
+    span {
       border-radius: 0 3px 3px 0;
     }
   }
-  a, span {
+  a,
+  span {
     display: block;
     padding: $-xxs $-s;
-    border: 1px solid #CCC;
+    border: 1px solid #ccc;
     margin-inline-start: -1px;
     user-select: none;
     @include lightDark(color, #555, #eee);
@@ -389,7 +406,11 @@ ul.pagination {
   }
   li.active span {
     @include lightDark(color, #111, #eee);
-    @include lightDark(background-color, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.5));
+    @include lightDark(
+      background-color,
+      rgba(0, 0, 0, 0.05),
+      rgba(0, 0, 0, 0.5)
+    );
   }
 }
 
@@ -397,7 +418,8 @@ ul.pagination {
   margin: 0;
 }
 
-.entity-list, .icon-list {
+.entity-list,
+.icon-list {
   margin: 0 (-$-m);
   h4 {
     margin: 0;
@@ -406,7 +428,7 @@ ul.pagination {
     margin: 0;
   }
   .text-small.text-muted {
-    color: #AAA;
+    color: #aaa;
     font-size: 0.75em;
     margin-top: $-xs;
   }
@@ -429,11 +451,14 @@ ul.pagination {
   height: 1.1px;
 }
 
-.icon-list hr + hr, .icon-list hr:first-child, .icon-list hr:last-child {
+.icon-list hr + hr,
+.icon-list hr:first-child,
+.icon-list hr:last-child {
   display: none;
 }
 
-.entity-list-item, .icon-list-item {
+.entity-list-item,
+.icon-list-item {
   padding: $-s $-m;
   display: flex;
   align-items: center;
@@ -461,7 +486,11 @@ ul.pagination {
     cursor: pointer;
   }
   &:not(.no-hover):hover {
-    @include lightDark(background-color, rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06));
+    @include lightDark(
+      background-color,
+      rgba(0, 0, 0, 0.06),
+      rgba(255, 255, 255, 0.06)
+    );
     text-decoration: none;
     border-radius: 4px;
   }
@@ -518,7 +547,11 @@ ul.pagination {
     flex: none;
   }
   &:hover {
-    @include lightDark(background-color, rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06));
+    @include lightDark(
+      background-color,
+      rgba(0, 0, 0, 0.06),
+      rgba(255, 255, 255, 0.06)
+    );
   }
 }
 
@@ -527,7 +560,7 @@ ul.pagination {
   align-self: stretch;
   display: flex;
   align-items: stretch;
-  border-inline-start: 1px solid rgba(0, 0, 0, .1);
+  border-inline-start: 1px solid rgba(0, 0, 0, 0.1);
   visibility: hidden;
 }
 .split-icon-list-item:hover .icon-list-item-dropdown,
@@ -544,16 +577,20 @@ ul.pagination {
     margin: 0;
   }
   &:hover {
-    @include lightDark(background-color, rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.06));
+    @include lightDark(
+      background-color,
+      rgba(0, 0, 0, 0.06),
+      rgba(255, 255, 255, 0.06)
+    );
   }
 }
 
 .card .entity-list-item:not(.no-hover, .book-contents .entity-list-item):hover {
-  @include lightDark(background-color, #F2F2F2, #2d2d2d);
+  @include lightDark(background-color, #f2f2f2, #2d2d2d);
   border-radius: 0;
 }
 .card .entity-list-item .entity-list-item:hover {
-  background-color: #EEEEEE;
+  background-color: #eeeeee;
 }
 
 .entity-list-item-children {
@@ -609,7 +646,8 @@ ul.pagination {
 
 .entity-list.compact {
   font-size: 0.6 * $fs-m;
-  h4, a {
+  h4,
+  a {
     line-height: 1.2;
   }
   .entity-item-snippet {
@@ -640,7 +678,7 @@ ul.pagination {
 }
 
 .entity-item-tags {
-  font-size: .75rem;
+  font-size: 0.75rem;
   opacity: 1;
   .primary-background-light {
     background: transparent;
@@ -689,19 +727,22 @@ ul.pagination {
     text-align: start;
   }
   li.border-bottom {
-    border-bottom: 1px solid #DDD;
+    border-bottom: 1px solid #ddd;
   }
   li hr {
     margin: $-xs 0;
   }
-  .icon-item, .text-item, .label-item {
+  .icon-item,
+  .text-item,
+  .label-item {
     padding: 8px $-m;
     @include lightDark(color, #555, #eee);
     fill: currentColor;
     white-space: nowrap;
     line-height: 1.4;
     cursor: pointer;
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       text-decoration: none;
       background-color: var(--color-primary-light);
       color: var(--color-primary);
@@ -780,7 +821,7 @@ ul.pagination {
   }
 }
 .grid-card:hover .featured-image-container {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .action-link-list {
@@ -802,7 +843,11 @@ ul.pagination {
     @include lightDark(color, #444, #888);
   }
   a:hover {
-    @include lightDark(background-color, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));
+    @include lightDark(
+      background-color,
+      rgba(0, 0, 0, 0.05),
+      rgba(255, 255, 255, 0.05)
+    );
     border-radius: 4px;
     text-decoration: none;
   }
@@ -813,7 +858,11 @@ ul.pagination {
     }
     a.active {
       border-radius: 4px;
-      @include lightDark(background-color, rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.05));
+      @include lightDark(
+        background-color,
+        rgba(0, 0, 0, 0.05),
+        rgba(255, 255, 255, 0.05)
+      );
     }
   }
 }
